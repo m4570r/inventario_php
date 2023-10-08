@@ -138,326 +138,234 @@ La base de datos también puede incluir una tabla de "Configuración del Sistema
 
 
 
--- Crear la tabla 'niveles_de_usuario'
-CREATE TABLE IF NOT EXISTS niveles_de_usuario (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    descripcion VARCHAR(50) NOT NULL
-);
-
--- Poblar la tabla 'niveles_de_usuario' con los niveles de usuario
-INSERT INTO niveles_de_usuario (descripcion) VALUES
-    ('Administrador'),
-    ('Técnico'),
-    ('Recepción de Mercancías'),
-    ('Almacenamiento'),
-    ('Gestión de Inventarios'),
-    ('Preparación de Pedidos'),
-    ('Control de Calidad'),
-    ('Gestión de Devoluciones'),
-    ('Distribución y Despacho'),
-    ('Mantenimiento de Equipos'),
-    ('Seguridad'),
-    ('Reportes y Documentación');
-
--- Crear la tabla 'usuarios'
-CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    apellido VARCHAR(50),
-    usuario VARCHAR(50),
-    telefono VARCHAR(50),
-    email VARCHAR(100) NOT NULL UNIQUE,
-    contrasena VARCHAR(255) NOT NULL
-);
-
--- Crear la tabla 'acceso_a_configuracion_del_sistema' (opcional)
-CREATE TABLE IF NOT EXISTS acceso_a_configuracion_del_sistema (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT,
-    tiene_acceso BOOLEAN,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'tokens'
-CREATE TABLE IF NOT EXISTS tokens (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT,
-    token VARCHAR(255) NOT NULL,
-    fecha_expiracion TIMESTAMP,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'productos'
-CREATE TABLE IF NOT EXISTS productos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_producto VARCHAR(100) NOT NULL,
-    cantidad INT NOT NULL,
-    ubicacion VARCHAR(50) NOT NULL,
-    id_historial INT
-);
-
--- Crear la tabla 'historial_productos'
-CREATE TABLE IF NOT EXISTS historial_productos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_producto INT,
-    tipo_evento ENUM('Ingreso', 'Despacho') NOT NULL,
-    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_usuario_ingreso INT,
-    id_usuario_despacho INT,
-    FOREIGN KEY (id_producto) REFERENCES productos(id),
-    FOREIGN KEY (id_usuario_ingreso) REFERENCES usuarios(id),
-    FOREIGN KEY (id_usuario_despacho) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'Recepción de Mercancías'
-CREATE TABLE IF NOT EXISTS recepcion_de_mercancias (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_recepcion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    cantidad INT NOT NULL,
-    calidad VARCHAR(255) NOT NULL,
-    documentos VARCHAR(255) NOT NULL,
-    ubicacion VARCHAR(50) NOT NULL,
-    id_usuario INT,
-    id_producto INT, -- Relación con la tabla productos
-    id_historial INT, -- Relación con la tabla historial_productos
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-    FOREIGN KEY (id_producto) REFERENCES productos(id),
-    FOREIGN KEY (id_historial) REFERENCES historial_productos(id)
-);
-
--- Crear la tabla 'Almacenamiento'
-CREATE TABLE IF NOT EXISTS almacenamiento (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_producto INT,
-    ubicacion_actual VARCHAR(50) NOT NULL,
-    fecha_almacenamiento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_historial INT, -- Relación con la tabla historial_productos
-    id_usuario INT, -- Relación con la tabla usuarios
-    FOREIGN KEY (id_producto) REFERENCES productos(id),
-    FOREIGN KEY (id_historial) REFERENCES historial_productos(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'Gestión de Inventarios'
-CREATE TABLE IF NOT EXISTS gestion_de_inventarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_inventario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    existencias_minimas INT NOT NULL,
-    existencias_maximas INT NOT NULL,
-    productos_caducados BOOLEAN NOT NULL,
-    id_producto INT,
-    id_historial INT, -- Relación con la tabla historial_productos
-    id_usuario INT, -- Relación con la tabla usuarios
-    FOREIGN KEY (id_producto) REFERENCES productos(id),
-    FOREIGN KEY (id_historial) REFERENCES historial_productos(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'clientes'
-CREATE TABLE IF NOT EXISTS clientes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    contacto VARCHAR(50),
-    telefono VARCHAR(15),
-    email VARCHAR(100),
-    direccion VARCHAR(255),
-    id_usuario INT,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'pedidos'
-CREATE TABLE IF NOT EXISTS pedidos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    numero_pedido VARCHAR(50) NOT NULL,
-    fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fecha_entrega_prevista DATE,
-    id_cliente INT,
-    direccion_entrega VARCHAR(255),
-    estado_pedido ENUM('Pendiente', 'En proceso', 'Entregado', 'Cancelado') NOT NULL,
-    total_pedido DECIMAL(10, 2) NOT NULL,
-    id_usuario INT,
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id), -- Referencia al cliente que hizo el pedido
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) -- Referencia al usuario que gestionó el pedido
-);
-
--- Crear la tabla 'Preparación de Pedidos'
-CREATE TABLE IF NOT EXISTS preparacion_de_pedidos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_pedido INT,
-    id_producto INT,
-    cantidad INT NOT NULL,
-    id_historial INT, -- Relación con la tabla historial_productos
-    id_usuario INT, -- Relación con la tabla usuarios
-    FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
-    FOREIGN KEY (id_producto) REFERENCES productos(id),
-    FOREIGN KEY (id_historial) REFERENCES historial_productos(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'Control de Calidad'
-CREATE TABLE IF NOT EXISTS control_de_calidad (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_control TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    resultado VARCHAR(255) NOT NULL,
-    id_producto INT,
-    id_historial INT, -- Relación con la tabla historial_productos
-    id_usuario INT, -- Relación con la tabla usuarios
-    FOREIGN KEY (id_producto) REFERENCES productos(id),
-    FOREIGN KEY (id_historial) REFERENCES historial_productos(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'Gestión de Devoluciones'
-CREATE TABLE IF NOT EXISTS gestion_de_devoluciones (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_devolucion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    razon VARCHAR(255) NOT NULL,
-    reintegracion BOOLEAN NOT NULL,
-    id_producto_devuelto INT,
-    id_historial INT, -- Relación con la tabla historial_productos
-    id_usuario INT, -- Relación con la tabla usuarios
-    FOREIGN KEY (id_producto_devuelto) REFERENCES productos(id),
-    FOREIGN KEY (id_historial) REFERENCES historial_productos(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'Distribución y Despacho'
-CREATE TABLE IF NOT EXISTS distribucion_y_despacho (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_despacho TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    destino VARCHAR(255) NOT NULL,
-    id_producto_despachado INT,
-    id_historial INT, -- Relación con la tabla historial_productos
-    id_usuario INT, -- Relación con la tabla usuarios
-    FOREIGN KEY (id_producto_despachado) REFERENCES productos(id),
-    FOREIGN KEY (id_historial) REFERENCES historial_productos(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'Seguridad'
-CREATE TABLE IF NOT EXISTS seguridad (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_registro_incidente TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    tipo_incidente VARCHAR(255) NOT NULL,
-    descripcion_incidente TEXT NOT NULL,
-    id_usuario_seguridad INT,
-    FOREIGN KEY (id_usuario_seguridad) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'equipos' (asegúrate de personalizar esta estructura según tus necesidades)
-CREATE TABLE IF NOT EXISTS equipos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_equipo VARCHAR(100) NOT NULL,
-    descripcion_equipo TEXT,
-    fecha_adquisicion DATE,
-    ubicacion_actual VARCHAR(50),
-    estado ENUM('Operativo', 'En mantenimiento', 'Fuera de servicio') NOT NULL
-);
-
--- Crear la tabla 'costos' con relación a equipos o activos
-CREATE TABLE IF NOT EXISTS costos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    descripcion VARCHAR(255) NOT NULL,
-    monto DECIMAL(10, 2) NOT NULL,
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_usuario INT,
-    id_equipo INT, -- Agregar una columna para la relación con equipos o activos
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-    FOREIGN KEY (id_equipo) REFERENCES equipos(id) -- Clave foránea para vincular con equipos o activos
-);
-
--- Crear la tabla 'Reportes y Documentación'
-CREATE TABLE IF NOT EXISTS reportes_y_documentacion (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo_documento VARCHAR(255) NOT NULL,
-    descripcion_documento TEXT NOT NULL,
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_usuario_reportes INT,
-    FOREIGN KEY (id_usuario_reportes) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'proveedores'
-CREATE TABLE IF NOT EXISTS proveedores (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    contacto VARCHAR(50),
-    telefono VARCHAR(15),
-    email VARCHAR(100),
-    direccion VARCHAR(255),
-    id_usuario INT,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crear la tabla 'compras'
-CREATE TABLE IF NOT EXISTS compras (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_proveedor INT,
-    total_compra DECIMAL(10, 2) NOT NULL,
-    id_usuario INT,
-    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
+- **inventario_app/**
+  - **app/**
+    - **config/**
+      - config.php (Configuración de la base de datos)
+      - config.json (Configuración en formato JSON)
+      - config.xml (Configuración en formato XML)
+    - **controllers/**
+      - UserLevelsController.php             
+      - UsersController.php                  
+      - AccessConfigurationController.php    
+      - TokenController.php                  
+      - ProductsController.php               
+      - HistoricalProductsController.php     
+      - ReceptionOfGoodsController.php       
+      - StorageController.php                
+      - InventoryManagementController.php    
+      - ClientsController.php                
+      - OrdersController.php                 
+      - OrderPreparationController.php       
+      - QualityControlController.php         
+      - ReturnsManagementController.php      
+      - DistributionDispatchController.php   
+      - SecurityController.php                
+      - TeamsController.php                  
+      - CostsController.php                  
+      - ReportsDocumentationController.php
+      - SuppliersController.php               
+      - PurchasingController.php             
+      - SalesController.php                  
+      - InvoiceController.php                
+      - PaymentsController.php               
+      - AccountStatusController.php          
+      - HistoricalPaymentController.php      
+      - CashFlowController.php               
+      - InventoryController.php               
+      - ReturnsController.php                 
+    - **models/**
+      - UserLevelsModel.php
+      - UsersModel.php
+      - AccessConfigurationModel.php
+      - TokenModel.php
+      - ProductsModel.php
+      - HistoricalProductsModel.php
+      - ReceptionOfGoodsModel.php
+      - StorageModel.php
+      - InventoryManagementModel.php
+      - ClientsModel.php
+      - OrdersModel.php
+      - OrderPreparationModel.php
+      - QualityControlModel.php
+      - ReturnsManagementModel.php
+      - DistributionDispatchModel.php
+      - SecurityModel.php
+      - TeamsModel.php
+      - CostsModel.php
+      - ReportsDocumentationModel.php
+      - SuppliersModel.php
+      - PurchasingModel.php
+      - SalesModel.php
+      - InvoiceModel.php
+      - PaymentsModel.php
+      - AccountStatusModel.php
+      - HistoricalPaymentModel.php
+      - CashFlowModel.php
+      - InventoryModel.php
+      - ReturnsModel.php
+    - **views/**
+      - **user_levels/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+		- details.views.php
+        - delete.views.php
+        - search.views.php
+      - **users/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+		- details.views.php 
+        - delete.views.php 
+        - search.views.php 
+        - reports.views.php 
+        - profile.views.php 
+      - **access_configuration/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **tokens/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **products/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+		- details.views.php 
+        - delete.views.php 
+        - search.views.php 
+        - reports.views.php 
+      - **historical_products/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **reception_of_goods/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **storage/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **inventory_management/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **clients/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **orders/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+		- details.views.php 
+        - delete.views.php 
+        - search.views.php 
+        - reports.views.php 
+      - **order_preparation/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **quality_control/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **returns_management/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **distribution_dispatch/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **security/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **teams/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **costs/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **reports_documentation/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php
+        - user_reports.views.php 
+        - product_reports.views.php 
+        - order_reports.views.php 
+      - **suppliers/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **purchasing/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php
+      - **sales/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **invoice/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **payments/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **account_status/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **historical_payment/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **cash_flow/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **inventory/**
+        - index.views.php 
+        - create.views.php 
+        - edit.views.php 
+      - **returns/**
+        - index.views.php
+        - create.views.php
+        - edit.views.php
+	  - **auth/**
+        - login.views.php
+        - register.views.php
+        - forgot_password.views.php
+        - reset_password.views.php
+      - **profile/**
+        - view_profile.views.php
+        - edit_profile.views.php
+	  - **website/**
+        - home.views.php 
+        - about.views.php 
+        - contact.views.php 
+        - products.views.php 
+    - **public/**
+      - **css/**
+        - style.css 
+      - **js/**
+        - main.js 
+    - **templates/**
+      - header.php
+      - footer.php
+    - index.php
+  - **log/**
+    - app.log
+  - **routes/**
+    - web.php (Rutas web)
+    - api.php (Rutas API REST)
 
 
-
--- Crear la tabla 'ventas'
-CREATE TABLE IF NOT EXISTS ventas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_venta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_producto INT,
-    cantidad INT NOT NULL,
-    precio_unitario DECIMAL(10, 2) NOT NULL,
-    total DECIMAL(10, 2) NOT NULL,
-    id_usuario INT,
-    FOREIGN KEY (id_producto) REFERENCES productos(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-);
-
--- Crea la tabla 'Facturas'
-CREATE TABLE IF NOT EXISTS factura (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    numero_factura VARCHAR(50) NOT NULL,
-    fecha_emision DATE NOT NULL,
-    descripcion TEXT,
-    monto_total DECIMAL(10, 2) NOT NULL,
-    id_cliente INT,
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id)
-);
-
--- Crea la tabla 'Pagos'
-CREATE TABLE IF NOT EXISTS pagos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    numero_pago VARCHAR(50) NOT NULL,
-    fecha_pago DATE NOT NULL,
-    monto_pagado DECIMAL(10, 2) NOT NULL,
-    id_factura INT,
-    FOREIGN KEY (id_factura) REFERENCES factura(id)
-);
-
--- Crea la tabla 'Estado de Cuenta'
-CREATE TABLE IF NOT EXISTS estado_de_cuenta (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_actualizacion DATE NOT NULL,
-    saldo_pendiente DECIMAL(10, 2) NOT NULL,
-    id_cliente INT,
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id)
-);
-
--- Crea la tabla 'Historial de Pagos'
-CREATE TABLE IF NOT EXISTS historial_de_pagos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_pago DATE NOT NULL,
-    monto_pagado DECIMAL(10, 2) NOT NULL,
-    id_cliente INT,
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id)
-);
-
--- Crea la tabla 'Flujo de efectivo'
-CREATE TABLE IF NOT EXISTS flujo_de_efectivo (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_transaccion DATE NOT NULL,
-    tipo_transaccion VARCHAR(50) NOT NULL,
-    descripcion TEXT,
-    monto DECIMAL(10, 2) NOT NULL
-);
