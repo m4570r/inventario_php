@@ -210,7 +210,7 @@ La base de datos también puede incluir una tabla de "Configuración del Sistema
         - index.views.php (Vista de listado de niveles de usuario)
         - create.views.php (Vista de creación de niveles de usuario)
         - edit.views.php (Vista de edición de niveles de usuario)
-	- details.views.php (Vista de detalles de niveles de usuario)
+        - details.views.php (Vista de detalles de niveles de usuario
         - delete.views.php (Vista de eliminación de niveles de usuario)
         - search.views.php (Vista de búsqueda de niveles de usuario)
       - **users/**
