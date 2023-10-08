@@ -174,7 +174,10 @@ La base de datos también puede incluir una tabla de "Configuración del Sistema
       - HistoricalPaymentController.php (Controlador para pagos históricos)      
       - CashFlowController.php (Controlador para flujo de efectivo)               
       - InventoryController.php (Controlador para inventario)               
-      - ReturnsController.php (Controlador para devoluciones)                 
+      - ReturnsController.php (Controlador para devoluciones)
+      - ProfileController.php (Controlador para el Perfil de Usuario)
+      - HomeController.php (Controlador para la WEB)
+      - AuthController.php (Controlador de Autenticacion)                 
     - **models/**
       - UserLevelsModel.php (Modelo para niveles de usuario)
       - UsersModel.php (Modelo para usuarios)
@@ -205,6 +208,8 @@ La base de datos también puede incluir una tabla de "Configuración del Sistema
       - CashFlowModel.php (Modelo para flujo de efectivo)
       - InventoryModel.php (Modelo para inventario)
       - ReturnsModel.php (Modelo para devoluciones)
+      - HomeModel.php (Modelo para el Home de la WEB)
+      - ProfileModel.php (Modelo para el Perfil de Usuario)
     - **views/**
       - **user_levels/**
         - index.views.php (Vista de listado de niveles de usuario)
@@ -365,6 +370,250 @@ La base de datos también puede incluir una tabla de "Configuración del Sistema
     - index.php (Archivo principal de la aplicación)
   - **log/**
     - app.log (Archivo de registro de la aplicación)
+    - api.log (Archivo de registro de la API-REST)
+    - web.log (Archivo de registro de la WEB)
   - **routes/**
     - web.php (Rutas web)
     - api.php (Rutas API REST)
+    - app.php (Rutas APP)
+
+
+| Ruta del Archivo                                           | Descripción                                           |
+| ---------------------------------------------------------- | ----------------------------------------------------- |
+| **inventario_app/**                                       | Carpeta raíz de la aplicación                         |
+| **app/**                                                  | Carpeta principal de la aplicación                    |
+| **config/**                                               | Carpeta que contiene archivos de configuración        |
+| config.php                                                | Configuración de la base de datos                     |
+| config.json                                               | Configuración en formato JSON                         |
+| config.xml                                                | Configuración en formato XML                          |
+| **controllers/**                                          | Carpeta que contiene controladores de la aplicación   |
+| UserLevelsController.php                                  | Controlador para niveles de usuario                   |
+| UsersController.php                                       | Controlador para usuarios                             |
+| AccessConfigurationController.php                         | Controlador para configuración de acceso              |
+| TokenController.php                                       | Controlador para tokens                               |
+| ProductsController.php                                    | Controlador para productos                            |
+| HistoricalProductsController.php                          | Controlador para productos históricos                 |
+| ReceptionOfGoodsController.php                            | Controlador para recepción de mercancías              |
+| StorageController.php                                     | Controlador para almacenamiento                       |
+| InventoryManagementController.php                         | Controlador para gestión de inventario                |
+| ClientsController.php                                     | Controlador para clientes                             |
+| OrdersController.php                                      | Controlador para pedidos                              |
+| OrderPreparationController.php                            | Controlador para preparación de pedidos               |
+| QualityControlController.php                              | Controlador para control de calidad                   |
+| ReturnsManagementController.php                           | Controlador para gestión de devoluciones              |
+| DistributionDispatchController.php                        | Controlador para distribución y despacho              |
+| SecurityController.php                                    | Controlador para seguridad                            |
+| TeamsController.php                                       | Controlador para equipos                              |
+| CostsController.php                                       | Controlador para costos                               |
+| ReportsDocumentationController.php                        | Controlador para documentación de informes            |
+| SuppliersController.php                                   | Controlador para proveedores                          |
+| PurchasingController.php                                  | Controlador para compras                              |
+| SalesController.php                                       | Controlador para ventas                               |
+| InvoiceController.php                                     | Controlador para facturación                          |
+| PaymentsController.php                                    | Controlador para pagos                                |
+| AccountStatusController.php                               | Controlador para estado de cuenta                     |
+| HistoricalPaymentController.php                           | Controlador para pagos históricos                     |
+| CashFlowController.php                                    | Controlador para flujo de efectivo                    |
+| InventoryController.php                                   | Controlador para inventario                           |
+| ReturnsController.php                                     | Controlador para devoluciones                         |
+| AuthController.php                                        | Controlador para autenticación                        |
+| ProfileController.php                                     | Controlador para el perfil de usuario                 |
+| HomeController.php                                       | Controlador para la página de inicio                  |
+| **models/**                                               | Carpeta que contiene modelos de la aplicación         |
+| ProfileModel.php                                          | Modelo para el perfil de usuario                     |
+| HomeModel.php                                             | Modelo para la página de inicio                       |
+| UserLevelsModel.php                                       | Modelo para niveles de usuario                        |
+| UsersModel.php                                            | Modelo para usuarios                                  |
+| AccessConfigurationModel.php                              | Modelo para configuración de acceso                   |
+| TokenModel.php                                            | Modelo para tokens                                    |
+| ProductsModel.php                                         | Modelo para productos                                 |
+| HistoricalProductsModel.php                               | Modelo para productos históricos                      |
+| ReceptionOfGoodsModel.php                                 | Modelo para recepción de mercancías                   |
+| StorageModel.php                                          | Modelo para almacenamiento                            |
+| InventoryManagementModel.php                              | Modelo para gestión de inventario                     |
+| ClientsModel.php                                          | Modelo para clientes                                  |
+| OrdersModel.php                                           | Modelo para pedidos                                   |
+| OrderPreparationModel.php                                 | Modelo para preparación de pedidos                    |
+| QualityControlModel.php                                   | Modelo para control de calidad                        |
+| ReturnsManagementModel.php                                | Modelo para gestión de devoluciones                   |
+| DistributionDispatchModel.php                             | Modelo para distribución y despacho                   |
+| SecurityModel.php                                         | Modelo para seguridad                                 |
+| TeamsModel.php                                            | Modelo para equipos                                   |
+| CostsModel.php                                            | Modelo para costos                                    |
+| ReportsDocumentationModel.php                             | Modelo para documentación de informes                 |
+| SuppliersModel.php                                        | Modelo para proveedores                               |
+| PurchasingModel.php                                       | Modelo para compras                                   |
+| SalesModel.php                                            | Modelo para ventas                                    |
+| InvoiceModel.php                                          | Modelo para facturación                               |
+| PaymentsModel.php                                         | Modelo para pagos                                     |
+| AccountStatusModel.php                                    | Modelo para estado de cuenta                          |
+| HistoricalPaymentModel.php                                | Modelo para pagos históricos                          |
+| CashFlowModel.php                                         | Modelo para flujo de efectivo                         |
+| InventoryModel.php                                        | Modelo para inventario                                |
+| ReturnsModel.php                                          | Modelo para devoluciones                              |
+| **views/**                                                | Carpeta que contiene vistas de la aplicación           |
+| **user_levels/**                                          | Carpeta de vistas para la gestión de niveles de usuario |
+| index.views.php                                           | Vista de listado de niveles de usuario                |
+| create.views.php                                          | Vista de creación de niveles de usuario               |
+| edit.views.php                                            | Vista de edición de niveles de usuario                |
+| details.views.php                                         | Vista de detalles de niveles de usuario               |
+| delete.views.php                                          | Vista de eliminación de niveles de usuario            |
+| search.views.php                                          | Vista de búsqueda de niveles de usuario               |
+| **users/**                                                | Carpeta de vistas para la gestión de usuarios          |
+| index.views.php                                           | Vista de listado de usuarios                          |
+| create.views.php                                          | Vista de creación de usuarios                         |
+| edit.views.php                                            | Vista de edición de usuarios                          |
+| details.views.php                                         | Vista de detalles de usuarios                         |
+| delete.views.php                                          | Vista de eliminación de usuarios                      |
+| search.views.php                                          | Vista de búsqueda de usuarios                         |
+| reports.views.php                                         | Vista de informes de usuarios                         |
+| profile.views.php                                         | Vista de perfil de usuario                            |
+| **access_configuration/**                                 | Carpeta de vistas para la configuración de acceso      |
+| index.views.php                                           | Vista de listado de configuración de acceso           |
+| create.views.php                                          | Vista de creación de configuración de acceso          |
+| edit.views.php                                            | Vista de edición de configuración de acceso           |
+| **tokens/**                                              | Carpeta de vistas para la gestión de tokens            |
+| index.views.php                                           | Vista de listado de tokens                            |
+| create.views.php                                          | Vista de creación de tokens                           |
+| edit.views.php                                            | Vista de edición de tokens                            |
+| **products/**                                            | Carpeta de vistas para la gestión de productos         |
+| index.views.php                                           | Vista de listado de productos                         |
+| create.views.php                                          | Vista de creación de productos                        |
+| edit.views.php                                            | Vista de edición de productos                         |
+| details.views.php                                         | Vista de detalles de productos                        |
+| delete.views.php                                          | Vista de eliminación de productos                     |
+| search.views.php                                          | Vista de búsqueda de productos                        |
+| reports.views.php                                         | Vista de informes de productos                        |
+| **historical_products/**                                  | Carpeta de vistas para la gestión de productos históricos |
+| index.views.php                                           | Vista de listado de productos históricos              |
+| create.views.php                                          | Vista de creación de productos históricos             |
+| edit.views.php                                            | Vista de edición de productos históricos              |
+| **reception_of_goods/**                                   | Carpeta de vistas para la recepción de mercancías       |
+| index.views.php                                           | Vista de listado de recepción de mercancías            |
+| create.views.php                                          | Vista de creación de recepción de mercancías           |
+| edit.views.php                                            | Vista de edición de recepción de mercancías            |
+| **storage/**                                              | Carpeta de vistas para el almacenamiento               |
+| index.views.php                                           | Vista de listado de almacenamiento                     |
+| create.views.php                                          | Vista de creación de almacenamiento                    |
+| edit.views.php                                            | Vista de edición de almacenamiento                     |
+| **inventory_management/**                                  | Carpeta de vistas para la gestión de inventario        |
+| index.views.php                                           | Vista de listado de gestión de inventario              |
+| create.views.php                                          | Vista de creación de gestión de inventario             |
+| edit.views.php                                            | Vista de edición de gestión de inventario              |
+| **clients/**                                              | Carpeta de vistas para clientes                        |
+| index.views.php                                           | Vista de listado de clientes                          |
+| create.views.php                                          | Vista de creación de clientes                         |
+| edit.views.php                                            | Vista de edición de clientes                          |
+| **orders/**                                               | Carpeta de vistas para pedidos                         |
+| index.views.php                                           | Vista de listado de pedidos                           |
+| create.views.php                                          | Vista de creación de pedidos                          |
+| edit.views.php                                            | Vista de edición de pedidos                           |
+| details.views.php                                         | Vista de detalles de pedidos                          |
+| delete.views.php                                          | Vista de eliminación de pedidos                       |
+| search.views.php                                          | Vista de búsqueda de pedidos                          |
+| reports.views.php                                         | Vista de informes de pedidos                          |
+| **order_preparation/**                                    | Carpeta de vistas para preparación de pedidos          |
+| index.views.php                                           | Vista de listado de preparación de pedidos            |
+| create.views.php                                          | Vista de creación de preparación de pedidos           |
+| edit.views.php                                            | Vista de edición de preparación de pedidos            |
+| **quality_control/**                                      | Carpeta de vistas para control de calidad              |
+| index.views.php                                           | Vista de listado de control de calidad                |
+| create.views.php                                          | Vista de creación de control de calidad               |
+| edit.views.php                                            | Vista de edición de control de calidad                |
+| **returns_management/**                                   | Carpeta de vistas para gestión de devoluciones         |
+| index.views.php                                           | Vista de listado de gestión de devoluciones           |
+| create.views.php                                          | Vista de creación de gestión de devoluciones          |
+| edit.views.php                                            | Vista de edición de gestión de devoluciones           |
+| **distribution_dispatch/**                                | Carpeta de vistas para distribución y despacho         |
+| index.views.php                                           | Vista de listado de distribución y despacho           |
+| create.views.php                                          | Vista de creación de distribución y despacho          |
+| edit.views.php                                            | Vista de edición de distribución y despacho           |
+| **security/**                                             | Carpeta de vistas para seguridad                       |
+| index.views.php                                           | Vista de listado de seguridad                         |
+| create.views.php                                          | Vista de creación de seguridad                        |
+| edit.views.php                                            | Vista de edición de seguridad                         |
+| **teams/**                                                | Carpeta de vistas para equipos                         |
+| index.views.php                                           | Vista de listado de equipos                           |
+| create.views.php                                          | Vista de creación de equipos                          |
+| edit.views.php                                            | Vista de edición de equipos                           |
+| **costs/**                                                | Carpeta de vistas para costos                          |
+| index.views.php                                           | Vista de listado de costos                            |
+| create.views.php                                          | Vista de creación de costos                           |
+| edit.views.php                                            | Vista de edición de costos                            |
+| **reports_documentation/**                                | Carpeta de vistas para documentación de informes        |
+| index.views.php                                           | Vista de listado de documentación de informes         |
+| create.views.php                                          | Vista de creación de documentación de informes        |
+| edit.views.php                                            | Vista de edición de documentación de informes         |
+| user_reports.views.php                                    | Vista de informes de usuarios                         |
+| product_reports.views.php                                 | Vista de informes de productos                        |
+| order_reports.views.php                                   | Vista de informes de pedidos                          |
+| **suppliers/**                                            | Carpeta de vistas para proveedores                     |
+| index.views.php                                           | Vista de listado de proveedores                       |
+| create.views.php                                          | Vista de creación de proveedores                      |
+| edit.views.php                                            | Vista de edición de proveedores                       |
+| **purchasing/**                                           | Carpeta de vistas para compras                         |
+| index.views.php                                           | Vista de listado de compras                           |
+| create.views.php                                          | Vista de creación de compras                          |
+| edit.views.php                                            | Vista de edición de compras                           |
+| **sales/**                                                | Carpeta de vistas para ventas                          |
+| index.views.php                                           | Vista de listado de ventas                            |
+| create.views.php                                          | Vista de creación de ventas                           |
+| edit.views.php                                            | Vista de edición de ventas                            |
+| **invoice/**                                              | Carpeta de vistas para facturación                     |
+| index.views.php                                           | Vista de listado de facturación                       |
+| create.views.php                                          | Vista de creación de facturación                      |
+| edit.views.php                                            | Vista de edición de facturación                       |
+| **payments/**                                             | Carpeta de vistas para pagos                           |
+| index.views.php                                           | Vista de listado de pagos                             |
+| create.views.php                                          | Vista de creación de pagos                            |
+| edit.views.php                                            | Vista de edición de pagos                             |
+| **account_status/**                                       | Carpeta de vistas para estado de cuenta                |
+| index.views.php                                           | Vista de listado de estado de cuenta                  |
+| create.views.php                                          | Vista de creación de estado de cuenta                 |
+| edit.views.php                                            | Vista de edición de estado de cuenta                  |
+| **historical_payment/**                                   | Carpeta de vistas para pagos históricos                |
+| index.views.php                                           | Vista de listado de pagos históricos                  |
+| create.views.php                                          | Vista de creación de pagos históricos                 |
+| edit.views.php                                            | Vista de edición de pagos históricos                  |
+| **cash_flow/**                                            | Carpeta de vistas para flujo de efectivo               |
+| index.views.php                                           | Vista de listado de flujo de efectivo                 |
+| create.views.php                                          | Vista de creación de flujo de efectivo                |
+| edit.views.php                                            | Vista de edición de flujo de efectivo                 |
+| **inventory/**                                            | Carpeta de vistas para inventario                      |
+| index.views.php                                           | Vista de listado de inventario                        |
+| create.views.php                                          | Vista de creación de inventario                       |
+| edit.views.php                                            | Vista de edición de inventario                        |
+| **returns/**                                              | Carpeta de vistas para devoluciones                    |
+| index.views.php                                           | Vista de listado de devoluciones                      |
+| create.views.php                                          | Vista de creación de devoluciones                     |
+| edit.views.php                                            | Vista de edición de devoluciones                      |
+| **auth/**                                                 | Carpeta de vistas para autenticación                   |
+| login.views.php                                           | Vista de inicio de sesión                             |
+| register.views.php                                        | Vista de registro de usuario                          |
+| forgot_password.views.php                                 | Vista de olvido de contraseña                        |
+| reset_password.views.php                                  | Vista de restablecimiento de contraseña               |
+| **profile/**                                              | Carpeta de vistas para el perfil de usuario            |
+| view_profile.views.php                                    | Vista de visualización de perfil de usuario            |
+| edit_profile.views.php                                    | Vista de edición de perfil de usuario                 |
+| **website/**                                              | Carpeta de vistas para el sitio web                    |
+| home.views.php                                            | Vista de la página de inicio                          |
+| about.views.php                                           | Vista de la página "Acerca de"                        |
+| contact.views.php                                         | Vista de la página de contacto                         |
+| products.views.php                                        | Vista de la página de productos                       |
+| **public/**                                               | Carpeta pública que contiene recursos estáticos        |
+| **css/**                                                 | Carpeta que contiene archivos CSS                      |
+| style.css                                                | Hoja de estilos CSS                                    |
+| **js/**                                                  | Carpeta que contiene archivos JavaScript               |
+| main.js                                                  | Archivo JavaScript principal                          |
+| **templates/**                                            | Carpeta que contiene plantillas                        |
+| header.php                                               | Plantilla de encabezado                               |
+| footer.php                                               | Plantilla de pie de página                             |
+| index.php                                                | Archivo principal de la aplicación                    |
+| **log/**                                                  | Carpeta que contiene archivos de registro              |
+| app.log                                                  | Archivo de registro de la aplicación                   |
+| api.log                                                  | Archivo de registro de la API REST                     |
+| web.log                                                  | Archivo de registro de las rutas web                   |
+| **routes/**                                               | Carpeta que contiene archivos de enrutamiento           |
+| web.php                                                  | Archivo de rutas web                                   |
+| api.php                                                  | Archivo de rutas API REST                              |
+| app.php                                                  | Archivo de rutas para la aplicación principal          |
