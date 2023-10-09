@@ -1,4 +1,22 @@
 /*
+
+
+
+
+
+             █████ █████                          ████ 
+            ░░███ ░░███                          ░░███ 
+          ███████  ░███████      █████   ████████ ░███ 
+         ███░░███  ░███░░███    ███░░   ███░░███  ░███ 
+        ░███ ░███  ░███ ░███   ░░█████ ░███ ░███  ░███ 
+        ░███ ░███  ░███ ░███    ░░░░███░███ ░███  ░███ 
+        ░░████████ ████████  ██ ██████ ░░███████  █████
+        ░░░░░░░░ ░░░░░░░░  ░░ ░░░░░░   ░░░░░███ ░░░░░ 
+                                            ░███       
+                                            █████      
+                                           ░░░░░       
+
+
 Se están agregando los siguientes niveles de usuario:
 01. 'Administrador'             : Este nivel tiene acceso completo al sistema y puede realizar tareas de administración, configuración y gestión de usuarios.
 02. 'Técnico'                   : Este nivel pueden realizar tareas técnicas y de mantenimiento en el sistema, pero pueden tener restricciones en cuanto a la configuración global.
