@@ -1,0 +1,18 @@
+{
+    "database": {
+        "host": "localhost",
+        "username": "tu_usuario_db",
+        "password": "tu_contraseña_db",
+        "dbname": "nombre_de_la_base_de_datos"
+    },
+    "app": {
+        "timezone": "America/New_York",
+        "debug_mode": true
+    },
+    "email": {
+        "smtp_server": "smtp.tudominio.com",
+        "smtp_port": 587,
+        "smtp_username": "tu_usuario_smtp",
+        "smtp_password": "tu_contraseña_smtp"
+    }
+}

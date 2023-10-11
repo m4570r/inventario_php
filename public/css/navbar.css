@@ -1,31 +1,65 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : navbar.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▀█░█▀█░█░█░█▀▄░█▀█░█▀▄░░░░█▀▀░█▀▀░█▀▀
 ░█░█░█▀█░▀▄▀░█▀▄░█▀█░█▀▄░░░░█░░░▀▀█░▀▀█
 ░▀░▀░▀░▀░░▀░░▀▀░░▀░▀░▀░▀░▀░░▀▀▀░▀▀▀░▀▀▀
+Descripción:
+El archivo navbar.css es una hoja de estilo en cascada (CSS) que se utiliza para definir el estilo y 
+la apariencia de la barra de navegación de una página web. La barra de navegación, a menudo ubicada en
+la parte superior de la página, es un componente esencial de la interfaz de usuario que permite a los 
+usuarios navegar por las diferentes secciones de un sitio web.
 
+Estilo de la barra de navegación: navbar.css contiene reglas CSS que definen cómo debe aparecer y 
+comportarse la barra de navegación. Esto incluye la apariencia visual, como el color de fondo, el 
+color del texto, el tamaño de la fuente y la disposición de los elementos dentro de la barra de 
+navegación.
 
+Diseño y disposición: Puede definir la disposición de los elementos de la barra de navegación, como la 
+alineación de los elementos de menú, la ubicación del logotipo del sitio y la posición de los botones 
+o enlaces.
 
+Estilos de enlaces y botones de navegación: navbar.css puede definir estilos específicos para los 
+enlaces de navegación y los botones de la barra. Esto puede incluir efectos de "hover" 
+(cuando el mouse pasa por encima) para resaltar los elementos interactivos.
 
+Estilos responsivos: Para garantizar que la barra de navegación se adapte a diferentes tamaños de 
+pantalla, navbar.css puede utilizar reglas de medios (media queries) para cambiar el diseño y la 
+apariencia de la barra en dispositivos móviles y tabletas.
 
+Transiciones y animaciones: Para mejorar la experiencia del usuario, navbar.css puede definir 
+transiciones y animaciones CSS que hacen que la barra de navegación responda de manera suave a las 
+interacciones del usuario, como el desplazamiento o el despliegue de menús desplegables.
 
-
-
-
-
-
-
-
-
+Estilos para menús desplegables: Si la barra de navegación incluye menús desplegables, el archivo 
+puede definir cómo deben aparecer y funcionar estos menús cuando el usuario interactúa con ellos.
 
 *********************************************************************************************************/
+/* navbar.css */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Estilos para elementos activos o desplegables */

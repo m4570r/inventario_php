@@ -1,0 +1,40 @@
+<!-- *********************************************************************************************** -->
+<!--  ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗                                                  -->
+<!-- ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝                                                  -->
+<!-- ██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗                                                 -->
+<!-- ██║     ██║   ██║██║╚██╗██║██╔══╝  ██║██║   ██║                                                 -->
+<!-- ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝                                                 -->
+<!--  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝                                                  -->
+<!-- ░█▀▀░█▀█░█▀█░█▀▀░▀█▀░█▀▀░░░░█░█░█▄█░█░░                                                         -->
+<!-- ░█░░░█░█░█░█░█▀▀░░█░░█░█░░░░▄▀▄░█░█░█░░                                                         -->
+<!-- ░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░▀░░▀░▀░▀░▀░▀▀▀                                                         -->
+
+<!-- Nombre del archivo            : config.xml                                                      -->
+<!-- Nombre del Programador        : Miguel Angel Gonzalez                                           -->
+<!-- Lenguaje de programación      : XML                                                             -->
+<!-- Versión                       : 1.0                                                             -->
+<!-- *********************************************************************************************** -->
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!-- Configuración de la base de datos -->
+    <database>
+        <host>localhost</host>
+        <username>usuario_db</username>
+        <password>contraseña_db</password>
+        <dbname>nombre_base_de_datos</dbname>
+    </database>
+    <!-- Configuración de la aplicación -->
+    <app>
+        <timezone>America/New_York</timezone>
+        <debug_mode>true</debug_mode>
+        <api_key>tu_api_key_secreta</api_key>
+    </app>
+    <!-- Configuración de correo electrónico -->
+    <email>
+        <smtp_server>smtp.tudominio.com</smtp_server>
+        <smtp_port>587</smtp_port>
+        <smtp_username>tu_usuario_smtp</smtp_username>
+        <smtp_password>tu_contraseña_smtp</smtp_password>
+    </email>
+</config>
+

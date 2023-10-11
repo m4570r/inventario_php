@@ -1,31 +1,44 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : third-party.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez                               
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░▀█▀░█░█░▀█▀░█▀▄░█▀▄░░░░░█▀█░█▀█░█▀▄░▀█▀░█░█░░░░█▀▀░█▀▀░█▀▀
 ░░█░░█▀█░░█░░█▀▄░█░█░▄▄▄░█▀▀░█▀█░█▀▄░░█░░░█░░░░░█░░░▀▀█░▀▀█
 ░░▀░░▀░▀░▀▀▀░▀░▀░▀▀░░░░░░▀░░░▀░▀░▀░▀░░▀░░░▀░░▀░░▀▀▀░▀▀▀░▀▀▀
 
+Descripción:
+El archivo third-party.css es una hoja de estilo en cascada (CSS) que se utiliza para aplicar estilos
+a componentes o elementos de terceros en una página web. Este archivo es comúnmente utilizado cuando 
+se integran bibliotecas o widgets de terceros en un sitio web y se desea personalizar su apariencia 
+para que se ajuste al diseño general del sitio.
 
+Estilos para widgets de terceros: third-party.css define cómo se verán y se comportarán los widgets, 
+componentes o elementos proporcionados por bibliotecas externas. Esto puede incluir la personalización
+de colores, tamaños, márgenes, fuentes y otros estilos visuales.
 
+Alineación y disposición: Si es necesario, third-party.css puede especificar la alineación y la 
+disposición de los componentes de terceros en la página. Esto es importante para garantizar que se 
+integren de manera coherente con el diseño general.
 
+Estilos responsivos: Al igual que con otros archivos CSS, es importante que los componentes de 
+terceros se vean bien en dispositivos móviles y pantallas más pequeñas. third-party.css puede incluir 
+reglas de medios CSS para ajustar la apariencia de estos componentes en diferentes tamaños de pantalla.
 
-
-
-
-
-
-
-
-
-
+Personalización específica del proyecto: En algunos casos, se pueden personalizar componentes de 
+terceros para que se adapten a la identidad visual o los requisitos específicos del proyecto. 
+third-party.css permite realizar estas personalizaciones sin modificar directamente el código de la 
+biblioteca de terceros.
 
 *********************************************************************************************************/
+/* third-party.css */
+.external-widget {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Estilos específicos para widgets o elementos de terceros */

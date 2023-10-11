@@ -1,31 +1,63 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : cart.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▀▀░█▀█░█▀▄░▀█▀░░░░█▀▀░█▀▀░█▀▀
 ░█░░░█▀█░█▀▄░░█░░░░░█░░░▀▀█░▀▀█
 ░▀▀▀░▀░▀░▀░▀░░▀░░▀░░▀▀▀░▀▀▀░▀▀▀
+Descripción:
+El archivo cart.css es una hoja de estilo en cascada (CSS) que se utiliza para definir el estilo y la 
+apariencia de la sección del carrito de compras en la aplicación. El carrito de compras es una parte 
+crucial de las tiendas en línea y permite a los usuarios agregar, gestionar y finalizar la compra de 
+productos.
 
+Estilos de lista de productos: cart.css define cómo se muestran los productos agregados al carrito. 
+Esto incluye la disposición de los elementos de la lista, como la imagen del producto, el nombre, el 
+precio y la cantidad.
 
+Estilos de botones de acción: Para los botones que permiten a los usuarios realizar acciones en el 
+carrito, como eliminar un producto o actualizar la cantidad, cart.css establece su apariencia. 
+Esto puede incluir cambios en el color, el tamaño y la forma de los botones.
 
+Estilos de resumen del carrito: Si el carrito de compras muestra un resumen con información como el 
+subtotal, el total y los impuestos, cart.css se encarga de darle estilo a esta sección.
 
+Estilos de formulario de finalización de compra: Si el carrito incluye un formulario para que los 
+usuarios ingresen información de envío y pago, este archivo puede personalizar la apariencia de los 
+campos del formulario, los botones de envío y otros elementos relacionados.
 
+Estilos de mensajes de estado: cart.css puede definir cómo se muestran los mensajes de estado, como 
+confirmaciones de producto agregado, actualizado o eliminado del carrito.
 
+Estilos responsivos: Para garantizar que el carrito de compras sea funcional y se vea bien en 
+dispositivos móviles y tabletas, cart.css puede utilizar reglas de medios (media queries) para 
+ajustar el diseño y el tamaño de los elementos según el tamaño de la pantalla.
 
-
-
-
-
-
-
-
+Transiciones y animaciones: Puede definir transiciones y animaciones CSS para mejorar la experiencia 
+del usuario al agregar o eliminar productos del carrito.
 
 *********************************************************************************************************/
+/* cart.css */
+.cart {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-item img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Estilos para elementos del carrito y diseño de productos */

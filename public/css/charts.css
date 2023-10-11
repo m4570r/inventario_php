@@ -1,31 +1,45 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : charts.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▀▀░█░█░█▀█░█▀▄░▀█▀░█▀▀░░░░█▀▀░█▀▀░█▀▀
 ░█░░░█▀█░█▀█░█▀▄░░█░░▀▀█░░░░█░░░▀▀█░▀▀█
 ░▀▀▀░▀░▀░▀░▀░▀░▀░░▀░░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀
+Descripción:
+El archivo charts.css es una hoja de estilo en cascada (CSS) que se utiliza en la presentación y 
+estilización de gráficos y visualizaciones de datos en una página web. Los gráficos y visualizaciones 
+de datos son componentes importantes para representar información de manera visual y comprensible. 
 
+Estilos de gráficos: charts.css define cómo se ven los elementos de los gráficos, como las barras en 
+un gráfico de barras, los puntos en un gráfico de dispersión o las áreas en un gráfico de áreas. 
+Esto incluye la configuración de colores, bordes, sombras y otros estilos visuales.
 
+Estilos de leyendas y etiquetas: Los gráficos a menudo incluyen leyendas, etiquetas de datos y 
+etiquetas de ejes. Este archivo puede personalizar la apariencia de estas etiquetas, como el tamaño 
+de la fuente, el color y la posición.
 
+Estilos de ejes y escalas: Los gráficos suelen tener ejes x e y, y charts.css puede definir su estilo, 
+incluidos los marcadores de escala, los títulos de ejes y los estilos de línea.
 
+Estilos de animación: Si los gráficos tienen animaciones, como transiciones suaves entre estados o 
+efectos de entrada, charts.css puede definir estas animaciones mediante reglas CSS.
 
+Estilos responsivos: Para garantizar que los gráficos sean receptivos y se adapten a diferentes 
+tamaños de pantalla, charts.css puede utilizar reglas de medios para ajustar la presentación de los 
+gráficos según el dispositivo del usuario.
 
-
-
-
-
-
-
-
-
+Personalización de temas: En algunas bibliotecas de gráficos, se pueden aplicar temas personalizados a 
+los gráficos. charts.css puede definir los estilos específicos de un tema en particular.
 
 *********************************************************************************************************/
+/* charts.css */
+.chart-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Estilos específicos para gráficos generados por bibliotecas como Chart.js */

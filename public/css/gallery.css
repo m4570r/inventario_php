@@ -1,31 +1,62 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : gallery.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez  
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▀▀░█▀█░█░░░█░░░█▀▀░█▀▄░█░█░░░░█▀▀░█▀▀░█▀▀
 ░█░█░█▀█░█░░░█░░░█▀▀░█▀▄░░█░░░░░█░░░▀▀█░▀▀█
 ░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░░▀░░▀░░▀▀▀░▀▀▀░▀▀▀
+Descripción:
+El archivo gallery.css es una hoja de estilo en cascada (CSS) que se utiliza para definir la 
+apariencia y el comportamiento de una galería de imágenes en la aplicación. Una galería de imágenes 
+es un componente común utilizado para mostrar una colección de imágenes de manera organizada y 
+atractiva. 
 
+Diseño de cuadrícula o carrusel: gallery.css define cómo se organizarán las imágenes en la galería, 
+ya sea en una cuadrícula ordenada o en un carrusel deslizante. Esto incluye la configuración de 
+márgenes, espaciado y alineación de las imágenes.
 
+Estilos de imágenes: Define cómo se verán las imágenes dentro de la galería, incluidos los bordes, 
+márgenes y sombras si se aplican.
 
+Estilos de navegación: Puede incluir botones o controles deslizantes para navegar por las imágenes. 
+gallery.css define el aspecto visual de estos elementos, como colores, tamaños de fuente y efectos de 
+hover.
 
+Estilos de descripción de imágenes: Si la galería muestra descripciones o títulos de imágenes, 
+gallery.css puede definir cómo se verán estos textos, incluidos los estilos de fuente, el espaciado y 
+la posición.
 
+Estilos de efectos de transición: Si se utilizan efectos de transición al cambiar de una imagen a 
+otra, este archivo puede definir los estilos de estas transiciones, como fundidos, desvanecimientos o 
+animaciones personalizadas.
 
+Estilos responsivos: gallery.css garantiza que la galería sea receptiva y se adapte a diferentes 
+tamaños de pantalla mediante reglas de medios CSS.
 
-
-
-
-
-
-
-
+Personalización de temas: En algunas implementaciones, es posible aplicar temas personalizados a la 
+galería de imágenes. gallery.css puede definir los estilos específicos de un tema en particular.
 
 *********************************************************************************************************/
+/* gallery.css */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gallery-item {
+    flex-basis: calc(33.33% - 20px);
+    margin-bottom: 20px;
+}
+
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+}
+
+/* Estilos para la disposición de la galería y elementos individuales */

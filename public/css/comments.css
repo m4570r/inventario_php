@@ -1,31 +1,59 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : comments.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▀▀░█▀█░█▄█░█▄█░█▀▀░█▀█░▀█▀░█▀▀░░░░█▀▀░█▀▀░█▀▀
 ░█░░░█░█░█░█░█░█░█▀▀░█░█░░█░░▀▀█░░░░█░░░▀▀█░▀▀█
 ░▀▀▀░▀▀▀░▀░▀░▀░▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀
 
+Descripción:
+El archivo comments.css es una hoja de estilo en cascada (CSS) que se utiliza para definir la 
+apariencia y el formato de los comentarios en el sitema. Los comentarios son componentes 
+comunes en sitios web que permiten a los usuarios interactuar, opinar y discutir sobre contenido 
+publicado. 
 
+Estilos de comentarios individuales: comments.css define cómo se verán los comentarios individuales, 
+incluyendo elementos como el avatar o imagen del usuario, el nombre del usuario, la fecha y hora del 
+comentario, y el texto del comentario en sí. Esto incluye estilos de fuente, colores de fondo, 
+márgenes y espaciado.
 
+Estilos de respuestas y comentarios anidados: Si los comentarios permiten respuestas o comentarios 
+anidados, comments.css define cómo se mostrarán estos elementos adicionales, a menudo con un margen 
+adicional o una indentación para indicar la jerarquía de los comentarios.
 
+Estilos de botones de respuesta y acción: Si se incluyen botones de respuesta, editar o eliminar 
+comentarios, este archivo define su apariencia, como colores, tamaños de fuente e iconos.
 
+Estilos de formulario de comentarios: Si los usuarios pueden agregar nuevos comentarios, comments.css 
+define cómo se verá el formulario de comentarios. Esto incluye campos de texto para el nombre del 
+usuario, el contenido del comentario y el botón de envío.
 
+Estilos de interacción y efectos visuales: comments.css puede definir efectos visuales, como 
+animaciones de aparición, resaltado al pasar el mouse y otros efectos para mejorar la interacción del 
+usuario con los comentarios.
 
+Estilos responsivos: Para garantizar que los comentarios se vean bien en dispositivos móviles y 
+pantallas de diferentes tamaños, comments.css incluirá reglas de medios CSS para hacer que la 
+disposición de los comentarios sea receptiva.
 
-
-
-
-
-
-
+Personalización de temas: En algunas implementaciones, es posible aplicar temas personalizados a los 
+comentarios. comments.css puede definir los estilos específicos de un tema en particular.
 
 *********************************************************************************************************/
+/* comments.css */
+.comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment-header {
+    font-weight: bold;
+}
+
+/* Estilos para comentarios individuales y encabezados */

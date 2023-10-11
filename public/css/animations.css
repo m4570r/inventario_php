@@ -1,31 +1,58 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
- ╚═════╝╚══════╝╚══════╝
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : animations.css    
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS    
+╚██████╗███████║███████║                                Versión                     : 1.0    
+ ╚═════╝╚══════╝╚══════╝                                    
 ░█▀█░█▀█░▀█▀░█▄█░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀░░░░█▀▀░█▀▀░█▀▀
 ░█▀█░█░█░░█░░█░█░█▀█░░█░░░█░░█░█░█░█░▀▀█░░░░█░░░▀▀█░▀▀█
 ░▀░▀░▀░▀░▀▀▀░▀░▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀                                   
 
+Descripción:
+El archivo animations.css es una hoja de estilo en cascada (CSS) que se utiliza para definir animaciones
+y transiciones visuales en la aplicacion. A través de reglas CSS, este archivo controla cómo los 
+elementos HTML se mueven, cambian de tamaño, se desvanecen u experimentan otros efectos visuales a lo 
+largo del tiempo. Aquí hay una descripción más detallada de lo que podría encontrarse en este archivo:
 
+Definición de animaciones: El archivo animations.css contiene reglas CSS que definen animaciones 
+específicas. Estas animaciones pueden tener nombres descriptivos, como "fade-in" (desvanecer) o 
+"slide-out" (deslizar hacia fuera), y se aplican a elementos HTML específicos.
 
+Propiedades de animación: Cada regla de animación incluye propiedades CSS que controlan cómo se 
+realizará la animación. Estas propiedades pueden incluir animation-duration (duración de la animación),
+animation-timing-function (función de temporización), animation-delay (retraso de inicio) y 
+animation-iteration-count (cantidad de repeticiones), entre otras.
 
+Keyframes (fotogramas clave): En muchas animaciones, se utilizan keyframes (fotogramas clave) para 
+definir cómo debe ser el estado del elemento en diferentes momentos de la animación. 
+Por ejemplo, podrías tener keyframes que describen cómo un elemento se desvanece gradualmente de 
+opaco a transparente.
 
+Transiciones: Además de las animaciones, animations.css también puede definir transiciones, que son 
+cambios de estado suaves en respuesta a eventos como el paso del mouse por encima de un elemento 
+(hover) o una modificación en las propiedades de un elemento. Las transiciones pueden definirse 
+utilizando las propiedades transition-property, transition-duration, transition-timing-function y 
+transition-delay.
 
-
-
-
-
-
-
-
-
+Aplicación de animaciones y transiciones: Para aplicar una animación o transición a un elemento HTML 
+específico, es necesario hacer referencia al nombre de la animación o la propiedad de transición en el 
+selector CSS correspondiente.
 
 *********************************************************************************************************/
+/* animations.css */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s;
+}
+
+/* Define y aplica animaciones según sea necesario */

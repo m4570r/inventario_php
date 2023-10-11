@@ -1,31 +1,55 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : social-buttons.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▀▀░█▀█░█▀▀░▀█▀░█▀█░█░░░░░░░█▀▄░█░█░▀█▀░▀█▀░█▀█░█▀█░█▀▀░░░░█▀▀░█▀▀░█▀▀
 ░▀▀█░█░█░█░░░░█░░█▀█░█░░░▄▄▄░█▀▄░█░█░░█░░░█░░█░█░█░█░▀▀█░░░░█░░░▀▀█░▀▀█
 ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░░░░░▀▀░░▀▀▀░░▀░░░▀░░▀▀▀░▀░▀░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀
 
+Descripción:
+El archivo social-buttons.css es una hoja de estilo en cascada (CSS) diseñada para dar estilo a los 
+botones relacionados con redes sociales en la aplicacion. Estos botones se utilizan comúnmente para 
+permitir a los usuarios compartir contenido o interactuar con las redes sociales, como Facebook, 
+Twitter, LinkedIn y otras plataformas. 
 
+Estilos de botones de redes sociales: social-buttons.css define cómo se verán los botones de redes 
+sociales en la página. Esto incluye el diseño visual de los botones, como colores, fondos, bordes, 
+márgenes y espaciado.
 
+Íconos de redes sociales: Si los botones incluyen íconos de redes sociales, este archivo define la 
+apariencia de los íconos, como el tamaño, el color y la alineación.
 
+Efectos de interacción: Para mejorar la experiencia del usuario, social-buttons.css puede definir 
+efectos visuales cuando los usuarios pasan el mouse sobre los botones, como cambios de color o 
+sombreado.
 
+Estilos responsivos: Es importante que los botones de redes sociales se vean bien en diferentes 
+dispositivos y tamaños de pantalla. Por lo tanto, social-buttons.css puede incluir reglas de medios 
+CSS para ajustar la apariencia de los botones en dispositivos móviles y pantallas más pequeñas.
 
+Posicionamiento y diseño: Este archivo puede especificar el posicionamiento y el diseño de los botones 
+en la página. Por ejemplo, se pueden alinear horizontal o verticalmente, o se pueden colocar en un 
+área específica del diseño.
 
-
-
-
-
-
-
-
+Personalización de temas: En algunas implementaciones, se permite la personalización de temas para los 
+botones de redes sociales. social-buttons.css puede definir estilos específicos para cada tema 
+disponible.
 
 *********************************************************************************************************/
+/* social-buttons.css */
+.social-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Estilos adicionales para diferentes botones de redes sociales */

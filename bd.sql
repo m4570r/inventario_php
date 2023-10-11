@@ -1,21 +1,14 @@
-/*
+/*********************************************************************************************************
 
-
-
-
-
-             █████ █████                          ████ 
-            ░░███ ░░███                          ░░███ 
-          ███████  ░███████      █████   ████████ ░███ 
-         ███░░███  ░███░░███    ███░░   ███░░███  ░███ 
-        ░███ ░███  ░███ ░███   ░░█████ ░███ ░███  ░███ 
-        ░███ ░███  ░███ ░███    ░░░░███░███ ░███  ░███ 
-        ░░████████ ████████  ██ ██████ ░░███████  █████
-        ░░░░░░░░ ░░░░░░░░  ░░ ░░░░░░   ░░░░░███ ░░░░░ 
-                                            ░███       
-                                            █████      
-                                           ░░░░░       
-
+███████╗ ██████╗ ██╗     
+██╔════╝██╔═══██╗██║                                    Archivo                     : bd.sql
+███████╗██║   ██║██║                                    Nombre del Programador      : Miguel Angel Gonzalez
+╚════██║██║▄▄ ██║██║                                    Lenguaje de Programación    : SQL
+███████║╚██████╔╝███████╗                               Versión                     : 1.0
+╚══════╝ ╚══▀▀═╝ ╚══════╝                               
+░█▀▀░▀█▀░█▀▀░▀█▀░█▀▀░█▄█░█▀█░░░▀█▀░█▀█░█░█░█▀▀░█▀█░▀█▀░█▀█░█▀▄░▀█▀░█▀█
+░▀▀█░░█░░▀▀█░░█░░█▀▀░█░█░█▀█░░░░█░░█░█░▀▄▀░█▀▀░█░█░░█░░█▀█░█▀▄░░█░░█░█
+░▀▀▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░▀░▀░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀░▀░▀░░▀░░▀░▀░▀░▀░▀▀▀░▀▀▀
 
 Se están agregando los siguientes niveles de usuario:
 01. 'Administrador'             : Este nivel tiene acceso completo al sistema y puede realizar tareas de administración, configuración y gestión de usuarios.
@@ -30,8 +23,12 @@ Se están agregando los siguientes niveles de usuario:
 10. 'Mantenimiento de Equipos'  : Este nivel están involucrados en el mantenimiento y reparación de equipos utilizados en el proceso.
 11. 'Seguridad'                 : Este nivel se dedica a la seguridad del sistema y a la gestión de incidentes de seguridad.
 12. 'Reportes y Documentación'  : Los usuarios de este nivel se encargan de generar informes y documentación relacionados con el funcionamiento del sistema y las operaciones.
+
 Cada valor se inserta en la columna 'descripcion' de la tabla 'niveles_de_usuario'.
 Estos registros representan los diferentes roles o niveles de acceso disponibles en el sistema.
+
+
+
 */
 
 -- Crear la base de datos 'inventario_app'

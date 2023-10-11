@@ -1,35 +1,57 @@
 /*********************************************************************************************************
 
-
-
-
-
- ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
- ╚═════╝╚══════╝╚══════╝
-░█▀▀░▀█▀░█░█░█░░░█▀▀░░░░█▀▀░█▀▀░█▀▀
+ ██████╗███████╗███████╗                        
+██╔════╝██╔════╝██╔════╝                                Archivo                     : style.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez
+██║     ╚════██║╚════██║                                Lenguaje de Programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
+ ╚═════╝╚══════╝╚══════╝                                
+░█▀▀░▀█▀░█░█░█░░░█▀▀░░░░█▀▀░█▀▀░█▀▀                     
 ░▀▀█░░█░░░█░░█░░░█▀▀░░░░█░░░▀▀█░▀▀█
-░▀▀▀░░▀░░░▀░░▀▀▀░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀                                        
+░▀▀▀░░▀░░░▀░░▀▀▀░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀     
 
+Descripción: El archivo `style.css` es una hoja de estilo en cascada (CSS) diseñada y creada para aplicarse 
+al sitio web con el fin de definir su aspecto visual y presentación, desempeña un papel fundamental en la 
+apariencia y la coherencia visual del sitio web, asegurando que los elementos se presenten de manera atractiva
+y funcional para los usuarios.
 
+1. Definición de Fuentes y Tipografía: Este archivo define las fuentes que se utilizarán en el sitio web, 
+incluyendo estilos de fuente como tamaño, tipo de letra y familia de fuentes.
 
+2. Esquema de Colores: Se establecen los colores principales utilizados en el sitio, como el color de fondo, 
+el color de texto y los colores de resaltado.
 
+3. Diseño de Caja: Se aplican márgenes, rellenos y bordes a los elementos HTML para controlar la disposición 
+y el espaciado entre los elementos en la página.
 
+4. Estilos de Botones y Enlaces: Define los estilos de los botones y los enlaces, incluyendo los estados de 
+"hover" (cuando el mouse pasa por encima) y "active" (cuando se hace clic).
 
+5. Estilos para Imágenes y Multimedia: Puede incluir estilos para garantizar que las imágenes y otros 
+elementos multimedia se ajusten correctamente al diseño general del sitio.
 
-
-
-
-
-
-
-
-
+6. Estilos Responsivos: Se pueden incluir reglas de medios para adaptar el diseño a diferentes tamaños de 
+pantalla, como dispositivos móviles y tabletas.
 *********************************************************************************************************/
-
-body{
-    background-color: black;
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Agrega estilos adicionales según tus necesidades */

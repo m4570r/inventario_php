@@ -1,31 +1,65 @@
 /*********************************************************************************************************
 
-
-
-
-
- ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+ ██████╗███████╗███████╗                                
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : tables.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░▀█▀░█▀█░█▀▄░█░░░█▀▀░█▀▀░░░░█▀▀░█▀▀░█▀▀
 ░░█░░█▀█░█▀▄░█░░░█▀▀░▀▀█░░░░█░░░▀▀█░▀▀█
 ░░▀░░▀░▀░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀
 
+Descripción:
+El archivo tables.css es una hoja de estilo en cascada (CSS) que se utiliza para definir el estilo y 
+la apariencia de las tablas HTML en la alplicación las tablas son elementos importantes para mostrar 
+datos en un formato estructurado y organizado. 
 
+Estilos de tabla básicos: tables.css contiene reglas CSS que definen cómo deben aparecer las tablas en
+su forma más básica. Esto incluye el espaciado, los bordes y el tamaño de las celdas de la tabla.
 
+Estilos de encabezados de tabla: Si la tabla tiene encabezados (th), este archivo puede personalizar 
+su estilo. Esto incluye aspectos como el color de fondo, el color del texto y el tamaño de la fuente 
+de los encabezados de columna.
 
+Estilos de filas y columnas alternas: Puede definir estilos alternos para las filas y columnas de la 
+tabla para facilitar la lectura y la comprensión de los datos.
 
+Resaltado de filas y celdas: Si desea resaltar ciertas filas o celdas, tables.css puede contener 
+reglas para cambiar el color de fondo o el texto cuando el usuario pasa el cursor por encima de ellas.
 
+Estilos de bordes y separadores: Puede personalizar los bordes de la tabla, las celdas y los 
+separadores entre las filas y columnas para lograr una apariencia específica.
 
+Estilos de paginación: Si la tabla es larga y requiere paginación, tables.css puede definir cómo 
+deben aparecer los controles de paginación, como los botones "Anterior" y "Siguiente".
 
+Estilos responsivos: Para garantizar que las tablas sean funcionales y se vean bien en dispositivos 
+móviles y tabletas, tables.css puede utilizar reglas de medios (media queries) para ajustar el diseño 
+y el tamaño de las celdas y otras partes de la tabla.
 
+Transiciones y animaciones: Puede definir transiciones y animaciones CSS para hacer que la interacción
+con las tablas sea suave y atractiva para el usuario.
 
-
-
-
-
+Comentarios y documentación: Es común incluir comentarios en el archivo tables.css para explicar cómo 
+se deben aplicar los estilos, qué clases CSS se deben utilizar y cualquier otra información relevante 
+para los desarrolladores que trabajen en el proyecto.
 
 *********************************************************************************************************/
+/* tables.css */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+/* Estilos adicionales para resaltar filas o columnas */

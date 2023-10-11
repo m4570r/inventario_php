@@ -1,31 +1,57 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : buttons.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▀▄░█░█░▀█▀░▀█▀░█▀█░█▀█░█▀▀░░░░█▀▀░█▀▀░█▀▀
 ░█▀▄░█░█░░█░░░█░░█░█░█░█░▀▀█░░░░█░░░▀▀█░▀▀█
 ░▀▀░░▀▀▀░░▀░░░▀░░▀▀▀░▀░▀░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀
+Descripción:
+El archivo buttons.css es una hoja de estilo en cascada (CSS) que se utiliza para definir el estilo y 
+la apariencia de los botones en la aplicacion. Los botones son elementos interactivos clave en la 
+interfaz de usuario del sitio web, ya que permiten a los usuarios realizar acciones como enviar 
+formularios, abrir ventanas modales, realizar compras o ejecutar funciones JavaScript.
 
+Estilos de botones: buttons.css contiene reglas CSS que definen cómo deben aparecer los botones. 
+Esto incluye aspectos como el color de fondo, el color del texto, el tamaño de la fuente, el borde y 
+la sombra.
 
+Estados de botones: Los botones pueden tener diferentes estados, como "normal", "hover" 
+(cuando el mouse pasa por encima) y "active" (cuando se hace clic). El archivo define cómo deben 
+cambiar los estilos de los botones en respuesta a estos estados para proporcionar retroalimentación 
+visual al usuario.
 
+Diseño de botones personalizados: Puede incluir reglas para crear botones personalizados con formas, 
+tamaños y estilos específicos que se adapten al diseño general del sitio web.
 
+Botones interactivos: Si los botones realizan acciones específicas, como enviar formularios o ejecutar
+scripts, el archivo puede definir cómo se deben comportar estos botones y qué efectos visuales deben 
+aplicarse.
 
+Botones de enlace: Si los botones se utilizan como enlaces a otras páginas o secciones del sitio, 
+buttons.css puede definir cómo deben aparecer estos enlaces y cómo deben resaltarse al pasar el mouse 
+sobre ellos.
 
+Estilos responsivos: Para garantizar que los botones se vean bien en dispositivos móviles y tabletas, 
+buttons.css puede utilizar reglas de medios (media queries) para ajustar el diseño y el tamaño de los 
+botones en pantallas más pequeñas.
 
-
-
-
-
-
-
-
+Transiciones y animaciones: Puede definir transiciones y animaciones CSS para hacer que la interacción
+con los botones sea suave y atractiva para el usuario.
 
 *********************************************************************************************************/
+/* buttons.css */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para botones adicionales (por ejemplo, botones secundarios o desactivados) */

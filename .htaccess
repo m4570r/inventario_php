@@ -1,0 +1,35 @@
+#*********************************************************************************************************
+#                  
+# ░░░░█░█░▀█▀░█▀█░█▀▀░█▀▀░█▀▀░█▀▀░█▀▀                   Archivo                    : .htaccess
+# ░░░░█▀█░░█░░█▀█░█░░░█░░░█▀▀░▀▀█░▀▀█                   Nombre del Programador     : Miguel Angel Gonzalez
+# ░▀░░▀░▀░░▀░░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀                   Lenguaje de Configuración  : APACHE
+#                                                       Versión                    : 1.0
+#
+# El archivo .htaccess, que significa "Hypertext Access," es un archivo de configuración especial utilizado 
+# en servidores web basados en Apache. Este archivo se utiliza para controlar y modificar la configuración 
+# del servidor web en un directorio específico y sus subdirectorios, es fundamental tener cuidado al editar
+# este archivo, ya que errores en su configuración pueden afectar el comportamiento del servidor.
+# 
+# Descripción:
+# El archivo .htaccess es una parte fundamental de la configuración de un servidor web Apache por lo general 
+# se coloca en el directorio raíz de tu sitio web, pero también se puede utilizar en subdirectorios para 
+# aplicar reglas de configuración específicas a esas ubicaciones.
+#
+# Control de acceso: Puedes especificar reglas para restringir o permitir el acceso a ciertos directorios o 
+# archivos, esto es útil para proteger recursos sensibles o restringir el acceso a usuarios autenticados.
+#
+# Redirecciones: Puedes configurar redirecciones de URL, lo que significa que puedes redirigir solicitudes de
+# una URL a otra esto es útil para cambiar las URL de tus páginas o corregir URLs obsoletas.
+#
+# Personalización de errores: Puedes personalizar las páginas de error que se muestran cuando se produce un 
+# error en el servidor, como un error 404 (página no encontrada) o un error 500 (error interno del servidor).
+#
+# Reescritura de URL: Puedes utilizar módulos como mod_rewrite para reescribir URLs de manera amigable para 
+# los motores de búsqueda o para mejorar la estructura de tus URL.
+#
+# Configuración adicional: Puedes ajustar una variedad de configuraciones relacionadas con la seguridad, la 
+# compresión, el almacenamiento en caché y otros aspectos del funcionamiento del servidor web.
+
+# Esto redirigira a index.html
+#RewriteEngine On
+#RewriteRule ^(.*)$ index.html [L]

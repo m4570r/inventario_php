@@ -1,31 +1,81 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : forms.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez   
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▀▀░█▀█░█▀▄░█▄█░█▀▀░░░░█▀▀░█▀▀░█▀▀
 ░█▀▀░█░█░█▀▄░█░█░▀▀█░░░░█░░░▀▀█░▀▀█
 ░▀░░░▀▀▀░▀░▀░▀░▀░▀▀▀░▀░░▀▀▀░▀▀▀░▀▀▀
+Descripción:
+El archivo forms.css es una hoja de estilo en cascada (CSS) que se utiliza para definir el estilo y 
+la apariencia de los formularios en la aplicacion. Los formularios son componentes esenciales de la 
+mayoría de los sitios web, ya que permiten a los usuarios enviar datos, registrarse, iniciar sesión y 
+realizar otras interacciones clave. 
 
+Estilos de campos de entrada: forms.css contiene reglas CSS que definen cómo deben aparecer los campos
+de entrada de texto, como cajas de texto, áreas de texto y campos de contraseña. Esto incluye aspectos
+como el color de fondo, el color del texto, el tamaño de la fuente y los bordes.
 
+Estilos de etiquetas: Las etiquetas de los campos de entrada, como "Nombre" o "Correo electrónico", 
+pueden personalizarse con estilos específicos, como el tamaño de fuente y el espaciado.
 
+Botones de envío y restablecimiento: Si el formulario incluye botones de envío y restablecimiento, 
+forms.css puede definir cómo deben aparecer y comportarse estos botones. Esto incluye estilos para los
+estados "hover" y "active" de los botones.
 
+Estilos de selección: Los elementos de selección, como menús desplegables y casillas de verificación,
+pueden personalizarse con estilos específicos en el archivo. Esto incluye la apariencia de las casillas
+de verificación marcadas y desmarcadas.
 
+Estilos de errores y validación: Si el formulario incluye validación en tiempo real o necesita mostrar
+mensajes de error, forms.css puede definir cómo se deben destacar los campos con errores y cómo deben 
+aparecer los mensajes de error.
 
+Diseño de formularios personalizados: Puede incluir reglas para crear formularios personalizados con 
+diseños únicos que se adapten al estilo general del sitio web.
 
+Estilos responsivos: Para garantizar que los formularios sean funcionales y se vean bien en 
+dispositivos móviles y tabletas, forms.css puede utilizar reglas de medios (media queries) para 
+ajustar el diseño y el tamaño de los campos de entrada y otros elementos.
 
-
-
-
-
-
-
+Transiciones y animaciones: Puede definir transiciones y animaciones CSS para hacer que la interacción
+con los formularios sea suave y atractiva para el usuario.
 
 *********************************************************************************************************/
+/* forms.css */
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para campos de entrada, etiquetas, botones, etc. */

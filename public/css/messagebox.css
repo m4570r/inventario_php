@@ -1,31 +1,54 @@
 /*********************************************************************************************************
 
-
-
-
-
  ██████╗███████╗███████╗
-██╔════╝██╔════╝██╔════╝
-██║     ███████╗███████╗
-██║     ╚════██║╚════██║
-╚██████╗███████║███████║
+██╔════╝██╔════╝██╔════╝                                Nombre del archivo          : messagebox.css
+██║     ███████╗███████╗                                Nombre del Programador      : Miguel Angel Gonzalez
+██║     ╚════██║╚════██║                                Lenguaje de programación    : CSS
+╚██████╗███████║███████║                                Versión                     : 1.0
  ╚═════╝╚══════╝╚══════╝
 ░█▄█░█▀▀░█▀▀░█▀▀░█▀█░█▀▀░█▀▀░█▀▄░█▀█░█░█░░░░█▀▀░█▀▀░█▀▀
 ░█░█░█▀▀░▀▀█░▀▀█░█▀█░█░█░█▀▀░█▀▄░█░█░▄▀▄░░░░█░░░▀▀█░▀▀█
 ░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀░░▀▀▀░▀░▀░▀░░▀▀▀░▀▀▀░▀▀▀
+Descripción:
+El archivo messagebox.css es una hoja de estilo en cascada (CSS) que se utiliza para definir el estilo
+y la apariencia de los mensajes emergentes o cuadros de diálogo en una página web. Estos mensajes 
+emergentes suelen utilizarse para mostrar información importante, notificaciones, advertencias o 
+mensajes de confirmación al usuario. 
 
+Estilo de mensajes emergentes: messagebox.css contiene reglas CSS que definen cómo deben aparecer y 
+comportarse los mensajes emergentes en la interfaz de usuario. Esto incluye la apariencia visual, 
+como el color de fondo, el color del texto, el tamaño de la fuente y la disposición de los elementos 
+dentro del mensaje emergente.
 
+Posicionamiento y dimensiones: El archivo puede definir cómo se posicionan los mensajes emergentes en 
+la pantalla, por ejemplo, en el centro, en una esquina o adyacente a un elemento específico. También 
+puede establecer dimensiones específicas, como el ancho y el alto del mensaje emergente.
 
+Animaciones y transiciones: Para hacer que los mensajes emergentes aparezcan y desaparezcan de manera 
+suave, messagebox.css puede definir animaciones o transiciones CSS. Esto puede incluir efectos de 
+desvanecimiento, deslizamiento o cualquier otro efecto visual que haga que el mensaje sea más 
+atractivo y amigable para el usuario.
 
+Estilos para tipos de mensajes diferentes: Dependiendo del propósito del mensaje emergente, 
+messagebox.css puede definir estilos específicos para diferentes tipos de mensajes, como mensajes de 
+éxito (verde), advertencias (amarillo) o errores (rojo).
 
-
-
-
-
-
-
-
-
-
+Comentarios y documentación: Es común incluir comentarios explicativos en el archivo messagebox.css 
+para describir cómo se deben utilizar los estilos y qué consideraciones deben tenerse en cuenta al 
+diseñar mensajes emergentes.
 
 *********************************************************************************************************/
+/* messagebox.css */
+.message-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para texto, botones u otros elementos dentro del MessageBox */
