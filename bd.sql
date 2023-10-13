@@ -2187,3 +2187,506 @@ WHERE id = 1;
 
 
 
+-- Procedimientos: Estos procedimientos te permiten realizar las funciones relacionadas con los procesos de la base de datos. 
+-- Asegúrate de personalizar los valores según tus necesidades y los detalles específicos de cada transacción o registro.
+
+-- Proceso de Ingreso de Productos (Recepción de Mercancías):
+
+-- Tablas involucradas: productos, historial_productos, recepcion_de_mercancias
+-- Funciones:
+-- Al recibir mercancías, se registran los detalles de los productos en la tabla productos, incluyendo su ubicación, 
+-- cantidad, fecha de ingreso, etc.
+-- Registro de un Producto en la Tabla productos al recibir mercancías
+
+    INSERT INTO productos (nombre_producto, cantidad, ubicacion, id_historial, id_usuario_ingreso, fecha_ingreso, existencias_minimas, fecha_vencimiento, productos_caducados, id_categoria, id_proveedor)
+    VALUES ('Nombre del Producto', 100, 'Ubicación de Almacenamiento', 1, 2, NOW(), 10, '2023-12-31', 0, 1, 1);
+
+-- Se registra el evento de ingreso en la tabla historial_productos.
+-- Registro del Evento de Ingreso en la Tabla historial_productos
+
+    INSERT INTO historial_productos (id_producto, tipo_evento, fecha_hora, id_usuario_ingreso, id_usuario_despacho)
+    VALUES (1, 'Ingreso', NOW(), 2, NULL);
+
+-- Los detalles específicos de la recepción, como la cantidad recibida, la calidad, los documentos, el usuario 
+-- responsable y observaciones, se registran en la tabla recepcion_de_mercancias.
+-- Registro de los Detalles de la Recepción en la Tabla recepcion_de_mercancias
+
+    INSERT INTO recepcion_de_mercancias (fecha_recepcion, cantidad, calidad, documentos, ubicacion, id_usuario, id_producto, id_historial, observaciones)
+    VALUES (NOW(), 100, 'Buena', 'Factura #123', 'Ubicación de Recepción', 2, 1, 1, 'Sin problemas detectados.');
+
+
+
+-- Proceso de Almacenamiento de Productos:
+
+-- Tablas involucradas: productos, historial_productos, almacenamiento
+-- Funciones:
+-- Cuando se almacenan productos, se actualiza la ubicación actual en la tabla productos.
+
+-- Actualización de la Ubicación Actual en la Tabla productos al almacenar productos
+UPDATE productos
+SET ubicacion = 'Nueva Ubicación de Almacenamiento'
+WHERE id = 1; -- Reemplaza con el ID del producto que se está almacenando
+
+-- Se registra el evento de almacenamiento en la tabla historial_productos.
+
+-- Registro del Evento de Almacenamiento en la Tabla historial_productos
+INSERT INTO historial_productos (id_producto, tipo_evento, fecha_hora, id_usuario_ingreso, id_usuario_despacho)
+VALUES (1, 'Almacenamiento', NOW(), 2, NULL); -- Reemplaza con el ID del producto que se está almacenando
+
+-- Los detalles del almacenamiento, como la ubicación actual, el usuario responsable y el historial, 
+-- se registran en la tabla almacenamiento.
+
+-- Registro de los Detalles del Almacenamiento en la Tabla almacenamiento
+INSERT INTO almacenamiento (id_producto, ubicacion_actual, fecha_almacenamiento, id_historial, id_usuario)
+VALUES (1, 'Nueva Ubicación de Almacenamiento', NOW(), 1, 2); -- Reemplaza con los valores específicos
+
+
+-- Proceso de Gestión de Inventarios:
+
+-- Tablas involucradas: productos, historial_productos, gestion_de_inventarios
+-- Funciones:
+-- Se realiza un seguimiento de las existencias mínimas, existencias máximas y productos caducados en la 
+-- tabla gestion_de_inventarios.
+
+-- Registro de Seguimiento en la Tabla gestion_de_inventarios
+INSERT INTO gestion_de_inventarios (fecha_inventario, existencias_minimas, existencias_maximas, productos_caducados, id_producto, id_historial, id_usuario)
+VALUES (NOW(), 10, 100, 0, 1, 1, 2); -- Reemplaza con los valores específicos
+
+-- Se relaciona con la tabla productos para monitorear los productos.
+-- Puedes realizar consultas SQL en la tabla productos para obtener información relacionada con la gestión de inventarios.
+
+-- Se registra el usuario responsable de la gestión.
+
+-- Registro del Usuario Responsable de la Gestión en la Tabla gestion_de_inventarios
+UPDATE gestion_de_inventarios
+SET id_usuario = 2 -- Reemplaza con el ID del usuario responsable
+WHERE id = 1; -- Reemplaza con el ID del registro de gestión de inventarios
+
+
+-- Proceso de Venta de Productos:
+
+-- Tablas involucradas: productos, historial_productos, ventas
+-- Funciones:
+-- Cuando se realiza una venta, se registran los detalles en la tabla ventas.
+
+-- Registro de Detalles de la Venta en la Tabla ventas
+INSERT INTO ventas (fecha_venta, id_producto, cantidad, precio_venta, cantidad_venta, precio_unitario, total, id_usuario)
+VALUES (NOW(), 1, 10, 15.99, 10, 15.99, 159.90, 2); -- Reemplaza con los valores específicos
+
+-- Se actualiza la cantidad de productos disponibles en la tabla productos.
+
+-- Actualización de la Cantidad de Productos Disponibles en la Tabla productos al realizar una venta
+UPDATE productos
+SET cantidad = cantidad - 10 -- Reemplaza con la cantidad vendida
+WHERE id = 1; -- Reemplaza con el ID del producto vendido
+
+-- Se relaciona con el historial de productos en la tabla historial_productos.
+
+-- Registro del Evento de Despacho en la Tabla historial_productos
+INSERT INTO historial_productos (id_producto, tipo_evento, fecha_hora, id_usuario_despacho)
+VALUES (1, 'Despacho', NOW(), 2); -- Reemplaza con el ID del producto vendido
+
+-- Se registra el usuario que realiza la venta.
+
+-- Registro del Usuario Responsable de la Venta en la Tabla ventas
+UPDATE ventas
+SET id_usuario = 2 -- Reemplaza con el ID del usuario responsable
+WHERE id = 1; -- Reemplaza con el ID del registro de venta
+
+
+
+-- Proceso de Control de Calidad:
+
+-- Tablas involucradas: productos, historial_productos, control_de_calidad
+-- Funciones:
+-- Se realiza una evaluación de calidad de los productos en la tabla control_de_calidad.
+
+-- Registro de Evaluación de Calidad en la Tabla control_de_calidad
+INSERT INTO control_de_calidad (fecha_control, resultado, id_producto, id_historial, id_usuario, observaciones)
+VALUES (NOW(), 'Aprobado', 1, 1, 2, 'Cumple con las normas de calidad.'); -- Reemplaza con los valores específicos
+
+-- Se relaciona con la tabla productos y el historial en historial_productos.
+
+-- Registro del Evento de Control de Calidad en la Tabla historial_productos
+INSERT INTO historial_productos (id_producto, tipo_evento, fecha_hora, id_usuario_despacho)
+VALUES (1, 'Control de Calidad', NOW(), 2); -- Reemplaza con el ID del producto evaluado
+
+-- Se registra el resultado de la evaluación, el usuario responsable y observaciones.
+
+-- Registro del Usuario Responsable y Observaciones en la Tabla control_de_calidad
+UPDATE control_de_calidad
+SET id_usuario = 2, observaciones = 'Evaluación completa y satisfactoria.'
+WHERE id = 1; -- Reemplaza con el ID del registro de control de calidad
+
+
+-- Proceso de Preparación de Pedidos:
+
+-- Tablas involucradas: productos, historial_productos, preparacion_de_pedidos
+-- Funciones:
+-- Se preparan pedidos registrando los productos y cantidades en la tabla preparacion_de_pedidos.
+
+-- Registro de Productos en Preparación de Pedidos en la Tabla preparacion_de_pedidos
+INSERT INTO preparacion_de_pedidos (id_pedido, id_producto, cantidad, id_historial, id_usuario, estado_pedido)
+VALUES (1, 1, 10, 1, 2, 2); -- Reemplaza con los valores específicos
+
+-- Se relaciona con la tabla productos y el historial en historial_productos.
+
+-- Registro del Evento de Preparación de Pedidos en la Tabla historial_productos
+INSERT INTO historial_productos (id_producto, tipo_evento, fecha_hora, id_usuario_despacho)
+VALUES (1, 'Preparación de Pedidos', NOW(), 2); -- Reemplaza con el ID del producto preparado
+
+-- Se registra el usuario responsable y el estado del pedido.
+
+-- Registro del Usuario Responsable y Estado del Pedido en la Tabla preparacion_de_pedidos
+UPDATE preparacion_de_pedidos
+SET id_usuario = 2, estado_pedido = 2
+WHERE id = 1; -- Reemplaza con el ID del registro de preparación de pedidos
+
+
+
+-- Proceso de Distribución y Despacho:
+
+-- Tablas involucradas: productos, historial_productos, distribucion_y_despacho
+-- Funciones:
+-- Se registran los detalles de la distribución y despacho en la tabla distribucion_y_despacho.
+
+-- Registro de Detalles de Distribución y Despacho en la Tabla distribucion_y_despacho
+INSERT INTO distribucion_y_despacho (fecha_despacho, destino, cantidad_despacho, id_producto_despachado, id_historial, id_usuario, id_vehiculo)
+VALUES (NOW(), 'Cliente ABC', 10, 1, 1, 2, 1); -- Reemplaza con los valores específicos
+
+-- Se relaciona con la tabla productos y el historial en historial_productos.
+
+-- Registro del Evento de Distribución y Despacho en la Tabla historial_productos
+INSERT INTO historial_productos (id_producto, tipo_evento, fecha_hora, id_usuario_despacho)
+VALUES (1, 'Distribución y Despacho', NOW(), 2); -- Reemplaza con el ID del producto despachado
+
+-- Se registra el usuario responsable, el destino y el vehículo.
+
+-- Registro del Usuario Responsable, Destino y Vehículo en la Tabla distribucion_y_despacho
+UPDATE distribucion_y_despacho
+SET id_usuario = 2, destino = 'Cliente XYZ', id_vehiculo = 2
+WHERE id = 1; -- Reemplaza con el ID del registro de distribución y despacho
+
+
+
+-- Proceso de Gestión de Devoluciones:
+
+-- Tablas involucradas: productos, historial_productos, gestion_de_devoluciones
+-- Funciones:
+-- Cuando se gestionan devoluciones, se registran los detalles en la tabla gestion_de_devoluciones.
+
+-- Registro de Detalles de Devolución en la Tabla gestion_de_devoluciones
+INSERT INTO gestion_de_devoluciones (fecha_devolucion, razon, reintegracion, id_producto_devuelto, id_historial, id_usuario, cantidad_devuelta, observaciones)
+VALUES (NOW(), 'Producto defectuoso', 1, 1, 1, 2, 5, 'Cliente reportó daño en los productos.'); -- Reemplaza con los valores específicos
+
+-- Se relaciona con la tabla productos y el historial en historial_productos.
+
+-- Registro del Evento de Devolución en la Tabla historial_productos
+INSERT INTO historial_productos (id_producto, tipo_evento, fecha_hora, id_usuario_despacho)
+VALUES (1, 'Gestión de Devoluciones', NOW(), 2); -- Reemplaza con el ID del producto devuelto
+
+-- Se registra el usuario responsable, la cantidad devuelta y observaciones.
+
+-- Actualización del Usuario Responsable, Cantidad Devuelta y Observaciones en la Tabla gestion_de_devoluciones
+UPDATE gestion_de_devoluciones
+SET id_usuario = 2, cantidad_devuelta = 10, observaciones = 'Cliente devolvió productos por error de pedido.'
+WHERE id = 1; -- Reemplaza con el ID del registro de devolución
+
+
+-- Proceso de Compra de Productos:
+
+-- Tablas involucradas: productos, historial_productos, compras, proveedores
+-- Funciones:
+-- Cuando se realiza una compra de productos, se registran los detalles de la compra en la tabla compras.
+
+-- Registro de Detalles de Compra en la Tabla compras
+INSERT INTO compras (fecha_compra, id_proveedor, total_compra, id_usuario, precio_compra, cantidad_compra, id_producto)
+VALUES (NOW(), 1, 500.00, 2, 10.00, 50, 1); -- Reemplaza con los valores específicos
+
+-- Se relaciona con la tabla productos para actualizar las existencias y el precio de compra.
+
+-- Actualización de Existencias y Precio de Compra en la Tabla productos
+UPDATE productos
+SET cantidad = cantidad + 50, precio_compra = 10.00
+WHERE id = 1; -- Reemplaza con el ID del producto comprado
+
+-- Se registra el proveedor, la cantidad comprada, el precio de compra y el usuario responsable.
+
+-- Registro del Proveedor, Cantidad Comprada, Precio de Compra y Usuario Responsable en la Tabla compras
+UPDATE compras
+SET id_proveedor = 1, cantidad_compra = 100, precio_compra = 9.50, id_usuario = 2
+WHERE id = 1; -- Reemplaza con el ID del registro de compra
+
+
+-- Proceso de Mantenimiento de Equipos:
+
+-- Tablas involucradas: equipos, costos
+-- Funciones:
+-- Cuando se realiza el mantenimiento de equipos o activos, se registran los detalles en la tabla equipos.
+
+-- Registro de Detalles de Mantenimiento en la Tabla equipos
+INSERT INTO equipos (nombre_equipo, descripcion_equipo, fecha_adquisicion, ubicacion_actual, estado)
+VALUES ('Equipo de Prueba', 'Descripción del Mantenimiento', '2023-10-01', 'Ubicación Actual', 'Operativo');
+
+-- Se relaciona con la tabla costos para registrar los costos asociados al mantenimiento.
+
+-- Registro de Costos Asociados al Mantenimiento en la Tabla costos
+INSERT INTO costos (descripcion, monto, fecha_registro, id_usuario, id_equipo)
+VALUES ('Mantenimiento de Equipo de Prueba', 500.00, NOW(), 2, 1); -- Reemplaza con los valores específicos
+
+-- Se registra la fecha de mantenimiento, la descripción, el costo y el usuario responsable.
+
+-- Registro de la Fecha de Mantenimiento, Descripción, Costo y Usuario Responsable en la Tabla equipos
+UPDATE equipos
+SET fecha_adquisicion = '2023-10-01', descripcion_equipo = 'Descripción Actualizada', estado = 'En mantenimiento'
+WHERE id = 1; -- Reemplaza con el ID del equipo que se está manteniendo
+
+
+-- Proceso de Seguridad y Registro de Incidentes:
+
+-- Tablas involucradas: seguridad
+-- Funciones:
+-- Para mantener la seguridad, se registran los incidentes o eventos de seguridad en la tabla seguridad.
+
+-- Registro de Incidentes de Seguridad en la Tabla seguridad
+INSERT INTO seguridad (tipo_incidente, descripcion_incidente, id_usuario_seguridad)
+VALUES ('Incidente de Seguridad', 'Descripción detallada del incidente', 2); -- Reemplaza con los valores específicos
+
+-- Se registran detalles como el tipo de incidente, la descripción y el usuario de seguridad responsable.
+
+
+-- Proceso de Reportes y Documentación:
+
+-- Tablas involucradas: reportes_y_documentacion
+-- Funciones:
+-- Para gestionar reportes y documentación, se registran detalles en la tabla reportes_y_documentacion.
+
+-- Registro de Detalles de Reportes y Documentación en la Tabla reportes_y_documentacion
+INSERT INTO reportes_y_documentacion (tipo_documento, descripcion_documento, id_usuario_reportes)
+VALUES ('Informe Mensual', 'Informe detallado de las operaciones mensuales', 2); -- Reemplaza con los valores específicos
+
+-- Se registran detalles del tipo de documento, la descripción y el usuario responsable.
+
+
+-- Proceso de Control de Acceso a la Configuración del Sistema:
+
+-- Tablas involucradas: acceso_a_configuracion_del_sistema
+-- Funciones:
+-- Si es necesario, puedes implementar un proceso para controlar el acceso a la configuración del sistema y mantener registros de usuarios con acceso.
+
+-- Registro de Acceso a la Configuración del Sistema en la Tabla acceso_a_configuracion_del_sistema
+INSERT INTO acceso_a_configuracion_del_sistema (id_usuario, tiene_acceso)
+VALUES (2, true); -- Reemplaza con los valores específicos
+
+-- Se registra si un usuario tiene acceso a la configuración del sistema.
+
+
+-- Proceso de Registro de Usuarios:
+
+-- Tablas involucradas: usuarios
+-- Funciones:
+-- Registrar nuevos usuarios en la tabla usuarios, incluyendo detalles como nombre, apellido, usuario, teléfono, email, contraseña y nivel de permisos.
+
+-- Registro de un Nuevo Usuario en la Tabla usuarios
+INSERT INTO usuarios (nombre, apellido, usuario, telefono, email, contrasena, nivel_permisos)
+VALUES ('Nombre', 'Apellido', 'nombreusuario', '123456789', 'correo@ejemplo.com', 'contrasena', 3); -- Reemplaza con los valores específicos
+
+-- Se registra un nuevo usuario con su información personal y nivel de permisos.
+
+
+
+-- Proceso de Registro de Vehículos:
+
+-- Tablas involucradas: vehiculos
+-- Funciones:
+-- Registrar información detallada de vehículos en la tabla vehiculos, incluyendo nombre, descripción, marca, modelo, año, placa, color, capacidad y disponibilidad.
+
+-- Registro de un Nuevo Vehículo en la Tabla vehiculos
+INSERT INTO vehiculos (nombre, descripcion, marca, modelo, ano, placa, color, capacidad, disponible)
+VALUES ('Vehículo 1', 'Descripción del vehículo 1', 'Marca 1', 'Modelo 1', 2023, 'XYZ123', 'Rojo', 5, 1); -- Reemplaza con los valores específicos
+
+-- Se registra un nuevo vehículo con información detallada, incluyendo nombre, descripción, marca, modelo, año, placa, color, capacidad y disponibilidad.
+
+
+-- Procedimientos:
+
+-- Proceso de Registro de Niveles de Usuario:
+
+-- Tablas involucradas: niveles_de_usuario
+-- Funciones:
+-- Registrar los niveles de usuario en la tabla niveles_de_usuario con descripciones específicas de cada nivel, como "Administrador" o "Cliente".
+
+-- Registro de Nuevos Niveles de Usuario en la Tabla niveles_de_usuario
+INSERT INTO niveles_de_usuario (descripcion)
+VALUES
+    ('Chofer');
+
+-- Se registran los diferentes niveles de usuario con descripciones específicas en la tabla niveles_de_usuario.
+
+
+-- Proceso de Gestión de Clientes:
+
+-- Tabla involucrada: clientes
+-- Funciones:
+-- Registrar información de clientes, como nombre, contacto, teléfono, email, dirección y relacionarlos con usuarios en la tabla clientes.
+
+-- Registro de un Nuevo Cliente en la Tabla clientes
+INSERT INTO clientes (nombre, contacto, telefono, email, direccion, id_usuario)
+VALUES ('Nombre del Cliente', 'Contacto del Cliente', '123-456-7890', 'cliente@email.com', 'Dirección del Cliente', 1);
+
+-- En el ejemplo anterior, se ha registrado un nuevo cliente en la tabla clientes. 
+-- Puedes personalizar los valores según la información del cliente que deseas registrar.
+
+-- También puedes relacionar este cliente con un usuario existente a través de la columna "id_usuario".
+
+
+-- Proceso de Facturación:
+
+-- Tablas involucradas: factura
+-- Funciones:
+-- Registrar facturas emitidas en la tabla factura con detalles como número de factura, fecha de emisión y monto total.
+
+-- Registro de una Nueva Factura en la Tabla factura
+INSERT INTO factura (numero_factura, fecha_emision, descripcion, monto_total, id_cliente)
+VALUES ('FAC-001', '2023-10-13', 'Descripción de la factura', 1000.00, 1);
+
+-- En el ejemplo anterior, se ha registrado una nueva factura en la tabla factura. 
+-- Puedes personalizar los valores según los detalles de la factura que deseas registrar.
+
+-- Proceso de Pagos:
+
+-- Tablas involucradas: pagos, estado_de_cuenta, historial_de_pagos
+-- Funciones:
+-- Registrar pagos recibidos en la tabla pagos con detalles como número de pago, fecha de pago y monto pagado.
+-- Mantener un registro del estado de cuenta de los clientes en la tabla estado_de_cuenta, actualizando el saldo pendiente.
+-- Registrar el historial de pagos en la tabla historial_de_pagos para un seguimiento detallado.
+
+-- Registro de un Nuevo Pago en la Tabla pagos
+INSERT INTO pagos (numero_pago, fecha_pago, monto_pagado, id_factura)
+VALUES ('PAGO-001', '2023-10-20', 500.00, 1);
+
+-- Actualización del Saldo Pendiente en la Tabla estado_de_cuenta
+-- El siguiente procedimiento SQL asume que tienes una columna "saldo_pendiente" en la tabla "estado_de_cuenta".
+
+UPDATE estado_de_cuenta
+SET saldo_pendiente = saldo_pendiente - 500.00
+WHERE id_cliente = 1;
+
+-- Registro del Pago en el Historial de Pagos en la Tabla historial_de_pagos
+INSERT INTO historial_de_pagos (fecha_pago, monto_pagado, id_cliente)
+VALUES ('2023-10-20', 500.00, 1);
+
+-- En los ejemplos anteriores, se ha registrado un nuevo pago en la tabla pagos y se ha actualizado el saldo pendiente
+-- del cliente en la tabla estado_de_cuenta. También se ha registrado el pago en el historial de pagos en la tabla 
+-- historial_de_pagos.
+
+-- Asegúrate de personalizar los valores según los detalles de la factura y el pago que deseas registrar.
+
+
+-- Proceso de Asignación de Vehículos:
+
+-- Tablas involucradas: movimientos_vehiculos
+-- Funciones:
+-- Registrar movimientos de asignación de vehículos en la tabla movimientos_vehiculos con detalles como tipo de movimiento, fecha, cantidad de combustible y usuario responsable.
+
+-- Registro de una Asignación de Vehículo en la Tabla movimientos_vehiculos
+INSERT INTO movimientos_vehiculos (id_vehiculo, tipo_movimiento, fecha_movimiento, cantidad_combustible, id_usuario)
+VALUES (1, 'Asignación', NOW(), 50.00, 2);
+
+-- En el ejemplo anterior, se ha registrado una asignación de vehículo en la tabla movimientos_vehiculos. Puedes personalizar los valores según los detalles de la asignación.
+
+-- Proceso de Desasignación de Vehículos:
+
+-- Tablas involucradas: movimientos_vehiculos
+-- Funciones:
+-- Registrar movimientos de desasignación de vehículos en la tabla movimientos_vehiculos con detalles como tipo de movimiento, fecha, cantidad de combustible y usuario responsable.
+
+-- Registro de una Desasignación de Vehículo en la Tabla movimientos_vehiculos
+INSERT INTO movimientos_vehiculos (id_vehiculo, tipo_movimiento, fecha_movimiento, cantidad_combustible, id_usuario)
+VALUES (1, 'Desasignación', NOW(), 10.00, 2);
+
+-- En el ejemplo anterior, se ha registrado una desasignación de vehículo en la tabla movimientos_vehiculos. Personaliza los valores según los detalles de la desasignación.
+
+-- Asegúrate de utilizar los valores adecuados para los campos y las tablas según tus necesidades y los detalles específicos de los movimientos de asignación y desasignación de vehículos.
+
+
+
+
+
+
+
+-- ***********************************************************************
+
+-- Registro de Compras:
+
+-- Tablas involucradas: compras, productos
+-- Funciones:
+-- Registrar compras de productos en la tabla compras, incluyendo proveedor, cantidad, precio de compra y detalles de los productos adquiridos.
+
+-- Registro de una Compra en la Tabla compras
+INSERT INTO compras (fecha_compra, id_proveedor, total_compra, id_usuario, precio_compra, cantidad_compra, id_producto)
+VALUES (NOW(), 1, 500.00, 2, 5.00, 100, 1);
+
+-- En el ejemplo anterior, se ha registrado una compra en la tabla compras. Personaliza los valores según los detalles de la compra.
+
+
+-- Registro de Ventas:
+
+-- Tablas involucradas: ventas, productos
+-- Funciones:
+-- Registrar ventas de productos en la tabla ventas, incluyendo cantidad, precio de venta y detalles de los productos vendidos.
+
+-- Registro de una Venta en la Tabla ventas
+INSERT INTO ventas (fecha_venta, id_producto, cantidad, precio_venta, cantidad_venta, precio_unitario, total, id_usuario)
+VALUES (NOW(), 1, 50, 10.00, 50, 10.00, 500.00, 2);
+
+-- En el ejemplo anterior, se ha registrado una venta en la tabla ventas. Personaliza los valores según los detalles de la venta.
+
+-- Gestión de Proveedores:
+
+-- Tabla involucrada: proveedores
+-- Funciones:
+-- Administrar y gestionar la información de proveedores en la tabla proveedores, incluyendo nombre, contacto, teléfono, email y dirección.
+
+-- Registro de un Nuevo Proveedor en la Tabla proveedores
+INSERT INTO proveedores (nombre, contacto, telefono, email, direccion, id_usuario)
+VALUES ('Nombre del Proveedor', 'Contacto del Proveedor', '123-456-7890', 'proveedor@email.com', 'Dirección del Proveedor', 2);
+
+-- En el ejemplo anterior, se ha registrado un nuevo proveedor en la tabla proveedores. Personaliza los valores según los detalles del proveedor.
+
+-- Gestión de Facturas y Pagos:
+
+-- Tablas involucradas: factura, pagos, estado_de_cuenta, historial_de_pagos
+-- Funciones:
+-- Registrar facturas emitidas en la tabla factura y pagos recibidos en la tabla pagos, con un seguimiento detallado en el estado de cuenta y el historial de pagos de los clientes.
+
+-- Registro de una Factura en la Tabla factura
+INSERT INTO factura (numero_factura, fecha_emision, descripcion, monto_total, id_cliente)
+VALUES ('F2023-001', '2023-10-01', 'Factura de ejemplo', 1000.00, 1);
+
+-- Registro de un Pago en la Tabla pagos
+INSERT INTO pagos (numero_pago, fecha_pago, monto_pagado, id_factura)
+VALUES ('P2023-001', '2023-10-15', 500.00, 1);
+
+-- Registro de un Estado de Cuenta en la Tabla estado_de_cuenta
+INSERT INTO estado_de_cuenta (fecha_actualizacion, saldo_pendiente, id_cliente)
+VALUES ('2023-10-15', 500.00, 1);
+
+-- Registro de un Historial de Pagos en la Tabla historial_de_pagos
+INSERT INTO historial_de_pagos (fecha_pago, monto_pagado, id_cliente)
+VALUES ('2023-10-15', 500.00, 1);
+
+-- En los ejemplos anteriores, se ha registrado una factura, un pago, un estado de cuenta y un historial de pagos. Personaliza los valores según los detalles de la factura y el pago.
+
+-- Seguimiento de Flujo de Efectivo:
+
+-- Tabla involucrada: flujo_de_efectivo
+-- Funciones:
+-- Registrar transacciones de flujo de efectivo en la tabla flujo_de_efectivo, incluyendo fecha, tipo de transacción, descripción y monto.
+
+-- Registro de una Transacción de Flujo de Efectivo en la Tabla flujo_de_efectivo
+INSERT INTO flujo_de_efectivo (fecha_transaccion, tipo_transaccion, descripcion, monto)
+VALUES ('2023-10-15', 'Ingreso', 'Venta de Productos', 1000.00);
+
+-- En el ejemplo anterior, se ha registrado una transacción de flujo de efectivo en la tabla flujo_de_efectivo. Personaliza los valores según los detalles de la transacción.
+
