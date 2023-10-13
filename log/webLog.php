@@ -1,14 +1,19 @@
 <?php /*********************************************************************************************************
 
 ██╗      ██████╗  ██████╗ 
-██║     ██╔═══██╗██╔════╝                               Nombre del Archivo          : webLog.php
-██║     ██║   ██║██║  ███╗                              Nombre del Programador      : Miguel Angel Gonzalez   
-██║     ██║   ██║██║   ██║                              Lenguaje de Programación    : PHP
-███████╗╚██████╔╝╚██████╔╝                              Versión                     : 1.0
+██║     ██╔═══██╗██╔════╝
+██║     ██║   ██║██║  ███╗
+██║     ██║   ██║██║   ██║
+███████╗╚██████╔╝╚██████╔╝
 ╚══════╝ ╚═════╝  ╚═════╝ 
 ░█░█░█▀▀░█▀▄░█░░░█▀█░█▀▀░░░░█▀█░█░█░█▀█
 ░█▄█░█▀▀░█▀▄░█░░░█░█░█░█░░░░█▀▀░█▀█░█▀▀
 ░▀░▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀░░▀░░░▀░▀░▀░░
+
+Nombre del Archivo          : webLog.php
+Nombre del Programador      : Miguel Angel Gonzalez
+Lenguaje de Programación    : PHP
+Versión                     : 1.0
 
 Descripción:
 El archivo "webLog.php" es un script en PHP diseñado para gestionar y registrar eventos relacionados 
@@ -42,5 +47,18 @@ nuevos archivos de registro periódicamente y se eliminan los registros más ant
 Auditoría y Monitoreo: Los registros generados por este script son esenciales para la auditoría de la 
 aplicación web y el monitoreo del comportamiento de los usuarios y el rendimiento del sitio.
 
-*********************************************************************************************************/
+*********************************************************************************************************/ ?>
+<?php
+// webLog.php
+include_once(__DIR__ . '../../app/config/log_config.php');
+
+function writeWebLog($level, $message) {
+    global $logLevels, $logFiles;
+    if ($logLevels[$level] <= $logLevels['ALL']) {
+        $timestamp = date('Y-m-d H:i:s');
+        $logMessage = "[$timestamp][$level] $message" . PHP_EOL;
+        error_log($logMessage, 3, $logFiles['web']);
+    }
+}
+
 ?>

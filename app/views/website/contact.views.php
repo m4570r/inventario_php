@@ -42,3 +42,45 @@ física, número de teléfono y dirección de correo electrónico de la empresa.
 después de que se envía un mensaje.
 
 *********************************************************************************************************/ ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto - Nombre de tu Empresa</title>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <!-- Agrega otros enlaces a hojas de estilo si es necesario -->
+</head>
+<body>
+    <?php include 'templates/header.php'; ?> <!-- Incluye el encabezado común a todas las páginas -->
+
+    <nav>
+        <!-- Agrega un menú de navegación si es necesario -->
+        <ul>
+            <li><a href="index.php?route=web&page=inicio">Inicio</a></li>
+            <li><a href="index.php?route=web&page=about">Acerca de</a></li>
+            <li><a href="index.php?route=web&page=contact">Contacto</a></li>
+            <li><a href="index.php?route=web&page=products">Productos</a></li>
+            <!-- Agrega enlaces a otras secciones de tu sitio -->
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Contacto</h1>
+        <p>
+            ¿Tienes alguna pregunta o comentario? ¡No dudes en ponerte en contacto con nosotros!
+        </p>
+
+        <!-- Agrega un formulario de contacto o detalles de contacto, como dirección de correo electrónico o número de teléfono -->
+
+        <p>
+            Estamos aquí para ayudarte.
+        </p>
+    </div>
+
+    <?php include 'templates/footer.php'; ?> <!-- Incluye el pie de página común a todas las páginas -->
+
+    <script src="public/js/main.js"></script>
+    <!-- Agrega otros enlaces a archivos JavaScript si es necesario -->
+</body>
+</html>

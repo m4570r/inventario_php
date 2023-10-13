@@ -1,14 +1,20 @@
 <?PHP /*******************************************************************************************************
 
 ██████╗  ██████╗ ██╗   ██╗████████╗███████╗             
-██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝██╔════╝             Nombre del archivo          : webRoute.php
-██████╔╝██║   ██║██║   ██║   ██║   █████╗               Nombre del Programador      : Miguel Angel Gonzalez
-██╔══██╗██║   ██║██║   ██║   ██║   ██╔══╝               Lenguaje de programación    : PHP 
-██║  ██║╚██████╔╝╚██████╔╝   ██║   ███████╗             Versión                     : 1.0
+██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝██╔════╝             
+██████╔╝██║   ██║██║   ██║   ██║   █████╗               
+██╔══██╗██║   ██║██║   ██║   ██║   ██╔══╝                
+██║  ██║╚██████╔╝╚██████╔╝   ██║   ███████╗             
 ╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝
 ░█░█░█▀▀░█▀▄░█▀▄░█▀█░█░█░▀█▀░█▀▀░░░░█▀█░█░█░█▀█
 ░█▄█░█▀▀░█▀▄░█▀▄░█░█░█░█░░█░░█▀▀░░░░█▀▀░█▀█░█▀▀
-░▀░▀░▀▀▀░▀▀░░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░░▀░░░▀░▀░▀░░       
+░▀░▀░▀▀▀░▀▀░░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░░▀░░░▀░▀░▀░░
+
+Nombre del archivo          : webRoute.php
+Nombre del Programador      : Miguel Angel Gonzalez
+Lenguaje de programación    : PHP
+Versión                     : 1.0
+
 Descripción:
 El archivo webRoute.php es un archivo PHP que se utiliza para el enrutamiento y la gestión de 
 solicitudes para esta aplicacion web desarrollada en PHP puro, es decir, sin utilizar un marco de 
@@ -48,5 +54,55 @@ web desarrolladas en PHP puro. Su función principal es garantizar que las solic
 controladores adecuados y que la aplicación responda de manera apropiada a las acciones del usuario en 
 función de la URL solicitada.
 
-*******************************************************************************************************/
-?>
+// Por ejemplo, puedes incluir controladores y vistas relevantes
+$directorio_actual = getcwd();
+include_once ($directorio_actual . '/app/controllers/WebController.php');
+$webController = new WebController();
+$webController->index();
+
+
+*******************************************************************************************************/ ?>
+
+<?php
+// Aquí puedes definir rutas y acciones para la parte web
+$directorio_actual = getcwd();
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+    switch ($page) {
+        case 'inicio':
+            // Lógica para mostrar la página de inicio
+            include_once ($directorio_actual . '/app/controllers/WebController.php');
+            $webController = new WebController();
+            $webController->index();
+            break;
+        case 'about':
+            // Lógica para mostrar la página "Acerca de"
+            include_once ($directorio_actual . '/app/controllers/WebController.php');
+            $webController = new WebController();
+            $webController->showAbout();
+            break;
+        case 'contact':
+            // Lógica para mostrar la página de contacto
+            include_once ($directorio_actual . '/app/controllers/WebController.php');
+            $webController = new WebController();
+            $webController->showContact();
+            break;
+        case 'products':
+            // Lógica para mostrar la página de productos
+            include_once ($directorio_actual . '/app/controllers/WebController.php');
+            $webController = new WebController();
+            $webController->showProducts();
+            break;
+        default:
+            // Página no válida
+            echo "Página no válida";
+            break;
+    }
+} else {
+    echo "Pagina no Valida";
+}
+
+
+
+?> 

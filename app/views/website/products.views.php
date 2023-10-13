@@ -45,3 +45,44 @@ desempeñan un papel importante en la presentación de información y la interac
 con los visitantes.
 
 *********************************************************************************************************/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Productos - Nombre de tu Empresa</title>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <!-- Agrega otros enlaces a hojas de estilo si es necesario -->
+</head>
+<body>
+    <?php include 'templates/header.php'; ?> <!-- Incluye el encabezado común a todas las páginas -->
+
+    <nav>
+        <!-- Agrega un menú de navegación si es necesario -->
+        <ul>
+        <li><a href="index.php?route=web&page=inicio">Inicio</a></li>
+            <li><a href="index.php?route=web&page=about">Acerca de</a></li>
+            <li><a href="index.php?route=web&page=contact">Contacto</a></li>
+            <li><a href="index.php?route=web&page=products">Productos</a></li>
+            <!-- Agrega enlaces a otras secciones de tu sitio -->
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Productos</h1>
+        <p>
+            Bienvenido a nuestra página de productos. Aquí encontrarás una amplia gama de productos de alta calidad.
+        </p>
+
+        <!-- Agrega una lista de productos o información detallada sobre tus productos -->
+
+        <p>
+            Si deseas más información sobre alguno de nuestros productos, no dudes en ponerte en contacto con nosotros.
+        </p>
+    </div>
+
+    <?php include 'templates/footer.php'; ?> <!-- Incluye el pie de página común a todas las páginas -->
+
+    <script src="public/js/main.js"></script>
+    <!-- Agrega otros enlaces a archivos JavaScript si es necesario -->
+</body>
+</html>

@@ -1,14 +1,20 @@
 <?php /*******************************************************************************************************
  
 ██████╗  ██████╗ ██╗   ██╗████████╗███████╗         
-██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝██╔════╝             Nombre del archivo          : apiRoute.php
-██████╔╝██║   ██║██║   ██║   ██║   █████╗               Nombre del Programador      : Miguel Angel Gonzalez
-██╔══██╗██║   ██║██║   ██║   ██║   ██╔══╝               Lenguaje de programación    : PHP
-██║  ██║╚██████╔╝╚██████╔╝   ██║   ███████╗             Versión                     : 1.0
+██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝██╔════╝             
+██████╔╝██║   ██║██║   ██║   ██║   █████╗               
+██╔══██╗██║   ██║██║   ██║   ██║   ██╔══╝               
+██║  ██║╚██████╔╝╚██████╔╝   ██║   ███████╗             
 ╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝
 ░█▀█░█▀█░▀█▀░█▀▄░█▀█░█░█░▀█▀░█▀▀░░░░█▀█░█░█░█▀█
 ░█▀█░█▀▀░░█░░█▀▄░█░█░█░█░░█░░█▀▀░░░░█▀▀░█▀█░█▀▀
-░▀░▀░▀░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░░▀░░░▀░▀░▀░░     
+░▀░▀░▀░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░░▀░░░▀░▀░▀░░
+
+Nombre del archivo          : apiRoute.php
+Nombre del Programador      : Miguel Angel Gonzalez
+Lenguaje de programación    : PHP
+Versión                     : 1.0
+
 Descripción:
 El archivo apiRoute.php es un archivo importante en esta aplicación web que ofrece una API REST. 
 Su objetivo principal es definir las rutas y controladores de la API, lo que permite la comunicación 
@@ -48,5 +54,30 @@ Comentarios y documentación: Es importante incluir comentarios y documentación
 apiRoute.php para explicar el propósito y el funcionamiento de cada ruta de la API, así como cualquier
 autenticación o autorización requerida y el formato de datos esperado en las solicitudes y respuestas.
 
- *******************************************************************************************************/
+ *******************************************************************************************************/ ?>
+ 
+ <?php
+ $directorio_actual = getcwd();
+ include_once ($directorio_actual . '/app/controllers/ApiController.php');
+ $apiController = new ApiController();
+ 
+ if (isset($_GET['cmd'])) {
+     $cmd = $_GET['cmd'];
+     switch ($cmd) {
+         case 'version':
+             $apiController->getVersion();
+             break;
+         case 'otra_accion':
+             $apiController->otraAccion();
+             break;
+         default:
+              $apiController->cmdError();
+             break;
+     }
+ } else {
+    $apiController->cmdError();
+     http_response_code(400);
+     echo json_encode(array("message" => "Falta el comando (cmd) en la solicitud"));
+ }
+ 
 ?>

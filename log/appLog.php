@@ -1,14 +1,19 @@
 <?php /*********************************************************************************************************
 
 ██╗      ██████╗  ██████╗ 
-██║     ██╔═══██╗██╔════╝                               Nombre del Archivo          : appLog.php
-██║     ██║   ██║██║  ███╗                              Nombre del Programador      : Miguel Angel Gonzalez   
-██║     ██║   ██║██║   ██║                              Lenguaje de Programación    : PHP
-███████╗╚██████╔╝╚██████╔╝                              Versión                     : 1.0
+██║     ██╔═══██╗██╔════╝
+██║     ██║   ██║██║  ███╗
+██║     ██║   ██║██║   ██║
+███████╗╚██████╔╝╚██████╔╝
 ╚══════╝ ╚═════╝  ╚═════╝        
 ░█▀█░█▀█░█▀█░█░░░█▀█░█▀▀░░░░█▀█░█░█░█▀█
 ░█▀█░█▀▀░█▀▀░█░░░█░█░█░█░░░░█▀▀░█▀█░█▀▀
 ░▀░▀░▀░░░▀░░░▀▀▀░▀▀▀░▀▀▀░▀░░▀░░░▀░▀░▀░░
+
+Nombre del Archivo          : appLog.php
+Nombre del Programador      : Miguel Angel Gonzalez
+Lenguaje de Programación    : PHP
+
 
 Descripción:
 El archivo "appLog.php" es un script en PHP diseñado para gestionar y registrar eventos relacionados 
@@ -43,5 +48,18 @@ Auditoría y Monitoreo: Los registros generados por este script son esenciales p
 la aplicación móvil y el monitoreo del comportamiento de los usuarios y el rendimiento de la 
 aplicación.
 
-*********************************************************************************************************/
+*********************************************************************************************************/ ?>
+<?php
+// appLog.php
+include_once(__DIR__ . '../../app/config/log_config.php');
+
+function writeAppLog($level, $message) {
+    global $logLevels, $logFiles;
+    if ($logLevels[$level] <= $logLevels['ALL']) {
+        $timestamp = date('Y-m-d H:i:s');
+        $logMessage = "[$timestamp][$level] $message" . PHP_EOL;
+        error_log($logMessage, 3, $logFiles['app']);
+    }
+}
+
 ?>

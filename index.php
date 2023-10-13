@@ -29,6 +29,8 @@ Esto se hace usando declaraciones `require` o `include`, por ejemplo:
    
    require_once 'app/config/config.php';
    require_once 'app/routes/appRoute.php';
+
+   <!--  <button onclick="mostrarAlerta()">Mostrar Alerta</button>   -->
    
 
 2. Configuración y inicialización: En este archivo, a menudo se realiza la configuración inicial de la
@@ -65,13 +67,62 @@ bases de datos o realizar limpieza antes de que el script finalice.
 
 ********************************************************************************************************/
 ?>
+<?php 
+/*
+// En tus controladores o en cualquier otro lugar de la aplicación
+include_once(__DIR__ . '/log/writeLog.php');
+
+writeLog('app', 'ALL', 'Este es un mensaje para log de app.');
+writeLog('api', 'ALL', 'Este es un mensaje para log de api.');
+writeLog('web', 'ALL', 'Este es un mensaje para log de web.');
+*/
+
+
+// Captura la URL solicitada
+// Clase base para el enrutamiento
+class Router {
+    public function route($route) {
+        switch ($route) {
+          case 'web':
+            // Enrutamiento para la parte web
+            include 'routes/webRoute.php';
+            break;
+          case 'api':
+            // Enrutamiento para la API
+            include 'routes/apiRoute.php';
+            break;
+          case 'app':
+            // Enrutamiento para la aplicación de escritorio
+            include 'routes/appRoute.php';
+            break;
+          default:
+            // Ruta no válida
+            echo "Ruta no válida";
+            break;
+        }
+    }
+}
+
+// Captura el valor del parámetro 'route' de la URL
+$route = $_GET['route'];
+
+// Instancia el enrutador y enruta la solicitud
+$router = new Router();
+$router->route($route);
+?>
+
+
 <?php
+/*
 // Incluye el archivo header.php
 require_once('templates/header.php');
+*/
 ?>
-  <button onclick="mostrarAlerta()">Mostrar Alerta</button>   
 
-  <?php
+
+<?php
+/*
 // Incluye el archivo header.php
 require_once('templates/footer.php');
+*/
 ?>

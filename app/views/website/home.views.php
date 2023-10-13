@@ -42,3 +42,41 @@ lo que facilita la navegación.
 visitantes.
 
 *********************************************************************************************************/ ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Nombre de tu Empresa</title>
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <!-- Agrega otros enlaces a hojas de estilo si es necesario -->
+</head>
+<body>
+    <?php include 'templates/header.php'; ?> <!-- Incluye el encabezado común a todas las páginas -->
+
+    <div class="banner">
+        <!-- Aquí puedes agregar tu banner -->
+    </div>
+
+    <nav>
+        <!-- Aquí puedes agregar un menú de navegación -->
+        <ul>
+            <li><a href="index.php?route=web&page=inicio">Inicio</a></li>
+            <li><a href="index.php?route=web&page=about">Acerca de</a></li>
+            <li><a href="index.php?route=web&page=contact">Contacto</a></li>
+            <li><a href="index.php?route=web&page=products">Productos</a></li>
+            <!-- Agrega enlaces a otras secciones de tu sitio -->
+        </ul>
+    </nav>
+
+    <div class="content">
+      <p><h1>Pagina de Inicio</h1></p>
+        <!-- Aquí puedes agregar contenido relacionado con noticias o cualquier cosa que desees mostrar en la página de inicio -->
+    </div>
+
+    <?php include 'templates/footer.php'; ?> <!-- Incluye el pie de página común a todas las páginas -->
+
+    <script src="public/js/main.js"></script>
+    <!-- Agrega otros enlaces a archivos JavaScript si es necesario -->
+</body>
+</html>
