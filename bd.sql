@@ -623,7 +623,10 @@ CREATE TABLE IF NOT EXISTS pedidos_pendientes (
     FOREIGN KEY (id_producto) REFERENCES productos(id)
 );
 
--- Ahora vamos a Insertar datos de Ejemplo en la base de datos
+
+
+/*
+-- Desbloquea esta seccion para Insertar datos de Ejemplo en la base de datos
 
 -- Usar la base de datos 'inventario_app'
 USE inventario_php;
@@ -1101,9 +1104,10 @@ VALUES
 (7, 'Combustible', 47.3, 10),
 (8, 'Combustible', 49.6, 1);
 
+*/
 
-
--- Ahora tambien podriamos querer Actualizar campos en nuestra Base de datos
+/*
+-- Tambien podrias querer Actualizar campos en la Base de datos para ello usa alguna de estas sentencias
 
 -- Actualizar tabla 'niveles_de_usuario'
     USE inventario_php;
@@ -1289,7 +1293,10 @@ VALUES
     SET cantidad = 20, fecha_entrega_prevista = '2023-11-05'
     WHERE id = 1;
 
--- Ahora tambien podriamos querer eliminar registros
+
+*/
+/*
+-- Tambien puedes querer eliminar un registros para ello usa alguna de estas sentencias
 
 -- Eliminar un usuario por su ID
 DELETE FROM usuarios WHERE id = 1;
@@ -1395,7 +1402,10 @@ DELETE FROM categorías WHERE nombre_categoria = 'Juguetes';
 DELETE FROM pedidos_pendientes
 WHERE id = 1;
 
--- Consultas SQL
+*/
+
+/*
+-- Usa alguna de estas Consultas SQL para interactuar con la base de datos
 
 --  Informe de Existencias Actuales (funciona)
    USE inventario_php;
@@ -2184,8 +2194,10 @@ WHERE id = 1;
 -- +----+-------------+-------------+---------------------+--------------------+---------------------+
 -- |  1 |         1   | Despacho    | 2023-10-12 07:49:32 |                4   |                 6   |
 -- +----+-------------+-------------+---------------------+--------------------+---------------------+
+*/
 
-
+/*
+-- En esta seccion encontraras los procedimientos que utiliza el programa
 
 -- Procedimientos: Estos procedimientos te permiten realizar las funciones relacionadas con los procesos de la base de datos. 
 -- Asegúrate de personalizar los valores según tus necesidades y los detalles específicos de cada transacción o registro.
@@ -2526,7 +2538,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de control de calidad
 
 --   +------------------------------------+
 --   |                                    |
---   |    Preparación de Pedidos           |
+--   |    Preparación de Pedidos          |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2536,7 +2548,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de control de calidad
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |    Tabla Preparación de Pedidos     |
+--   |    Tabla Preparación de Pedidos    |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2545,7 +2557,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de control de calidad
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |    Tabla Historial Productos        |
+--   |    Tabla Historial Productos       |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2554,7 +2566,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de control de calidad
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |    Tabla Usuarios                   |
+--   |    Tabla Usuarios                  |
 --   |                                    |
 --   +------------------------------------+
 
@@ -2596,7 +2608,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de preparación de pedidos
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |   Tabla Distribución y Despacho     |
+--   |   Tabla Distribución y Despacho    |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2605,7 +2617,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de preparación de pedidos
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |   Tabla Historial Productos         |
+--   |   Tabla Historial Productos        |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2614,11 +2626,11 @@ WHERE id = 1; -- Reemplaza con el ID del registro de preparación de pedidos
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |   Tabla Usuarios                    |
+--   |   Tabla Usuarios                   |
 --   |                                    |
 --   +------------------------------------+
 --   |                                    |
---   |   Tabla Vehículos                   |
+--   |   Tabla Vehículos                  |
 --   |                                    |
 --   +------------------------------------+
 
@@ -2720,7 +2732,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de devolución
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |   Tabla Compras                     |
+--   |   Tabla Compras                    |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2729,7 +2741,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de devolución
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |   Tabla Productos                   |
+--   |   Tabla Productos                  |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2738,7 +2750,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de devolución
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |   Tabla Proveedores                 |
+--   |   Tabla Proveedores                |
 --   |                                    |
 --   +------------------------------------+
 
@@ -2781,7 +2793,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de compra
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Equipos                   |
+--   |     Tabla Equipos                  |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2790,7 +2802,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de compra
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Costos                    |
+--   |     Tabla Costos                   |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2799,7 +2811,7 @@ WHERE id = 1; -- Reemplaza con el ID del registro de compra
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Usuarios                  |
+--   |     Tabla Usuarios                 |
 --   |                                    |
 --   +------------------------------------+
 
@@ -2829,11 +2841,11 @@ WHERE id = 1; -- Reemplaza con el ID del equipo que se está manteniendo
 
 -- Proceso de Seguridad y Registro de Incidentes:
 
---   +------------------------------------+
---   |                                    |
---   |   Seguridad y Registro de Incidentes|
---   |                                    |
---   +------------------------------------+
+--   +--------------------------------------+
+--   |                                      |
+--   |   Seguridad y Registro de Incidentes |
+--   |                                      |
+--   +--------------------------------------+
 --                   |
 --                   |   (Registro de Incidentes de Seguridad)
 --                   |   (Tipo de Incidente, Descripción, Usuario de Seguridad, etc.)
@@ -2841,7 +2853,7 @@ WHERE id = 1; -- Reemplaza con el ID del equipo que se está manteniendo
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Seguridad                 |
+--   |     Tabla Seguridad                |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2850,7 +2862,7 @@ WHERE id = 1; -- Reemplaza con el ID del equipo que se está manteniendo
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Usuarios                  |
+--   |     Tabla Usuarios                 |
 --   |                                    |
 --   +------------------------------------+
 
@@ -2872,7 +2884,7 @@ VALUES ('Incidente de Seguridad', 'Descripción detallada del incidente', 2); --
 
 --   +------------------------------------+
 --   |                                    |
---   |   Reportes y Documentación          |
+--   |   Reportes y Documentación         |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2882,7 +2894,7 @@ VALUES ('Incidente de Seguridad', 'Descripción detallada del incidente', 2); --
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Reportes y Documentación  |
+--   |     Tabla Reportes y Documentación |
 --   |                                    |
 --   +------------------------------------+
 --                   |
@@ -2891,7 +2903,7 @@ VALUES ('Incidente de Seguridad', 'Descripción detallada del incidente', 2); --
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Usuarios                  |
+--   |     Tabla Usuarios                 |
 --   |                                    |
 --   +------------------------------------+
 
@@ -2911,7 +2923,7 @@ VALUES ('Informe Mensual', 'Informe detallado de las operaciones mensuales', 2);
 
 --   +------------------------------------+
 --   |                                    |
---   |  Control de Acceso a Configuración  |
+--   |  Control de Acceso a Configuración |
 --   |       del Sistema                  |
 --   |                                    |
 --   +------------------------------------+
@@ -2922,7 +2934,7 @@ VALUES ('Informe Mensual', 'Informe detallado de las operaciones mensuales', 2);
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Acceso a Configuración    |
+--   |     Tabla Acceso a Configuración   |
 --   |     del Sistema                    |
 --   |                                    |
 --   +------------------------------------+
@@ -2932,7 +2944,7 @@ VALUES ('Informe Mensual', 'Informe detallado de las operaciones mensuales', 2);
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |     Tabla Usuarios                  |
+--   |     Tabla Usuarios                 |
 --   |                                    |
 --   +------------------------------------+
 
@@ -3012,7 +3024,7 @@ VALUES ('Nombre', 'Apellido', 'nombreusuario', '123456789', 'correo@ejemplo.com'
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |         Tabla Vehículos             |
+--   |         Tabla Vehículos            |
 --   |                                    |
 --   +------------------------------------+
 
@@ -3044,7 +3056,7 @@ VALUES ('Vehículo 1', 'Descripción del vehículo 1', 'Marca 1', 'Modelo 1', 20
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |   Tabla Niveles de Usuario          |
+--   |   Tabla Niveles de Usuario         |
 --   |                                    |
 --   +------------------------------------+
 
@@ -3077,7 +3089,7 @@ VALUES
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |        Tabla Clientes               |
+--   |        Tabla Clientes              |
 --   |                                    |
 --   +------------------------------------+
 
@@ -3111,7 +3123,7 @@ VALUES ('Nombre del Cliente', 'Contacto del Cliente', '123-456-7890', 'cliente@e
 --                   V
 --   +------------------------------------+
 --   |                                    |
---   |           Tabla Factura             |
+--   |           Tabla Factura            |
 --   |                                    |
 --   +------------------------------------+
 
@@ -3460,3 +3472,6 @@ VALUES ('2023-10-15', 'Ingreso', 'Venta de Productos', 1000.00);
 
 -- En el ejemplo anterior, se ha registrado una transacción de flujo de efectivo en la tabla flujo_de_efectivo. Personaliza los valores según los detalles de la transacción.
 
+*/
+
+-- FIN --
