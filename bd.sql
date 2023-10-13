@@ -2190,7 +2190,45 @@ WHERE id = 1;
 -- Procedimientos: Estos procedimientos te permiten realizar las funciones relacionadas con los procesos de la base de datos. 
 -- Asegúrate de personalizar los valores según tus necesidades y los detalles específicos de cada transacción o registro.
 
+-- ---------------------------------------------------------------------------------------------------------------------
 -- Proceso de Ingreso de Productos (Recepción de Mercancías):
+
+--   +-------------------------------+
+--   |                               |
+--   |  Ingreso de Productos         |
+--   |  (Recepción de Mercancías)    |
+--   |                               |
+--   +-------------------------------+
+--                 |
+--                 |   (Detalles de Productos)
+--                 |   (Ubicación, Cantidad, Fecha, etc.)
+--                 |
+--                 V
+--   +-------------------------------+
+--   |                               |
+--   |        Tabla Productos        |
+--   |                               |
+--   +-------------------------------+
+--                 |
+--                 |   (Evento de Ingreso)
+--                 |
+--                 V
+--   +-------------------------------+
+--   |                               |
+--   |   Tabla Historial Productos   |
+--   |                               |
+--   +-------------------------------+
+--                 |
+--                 |   (Detalles de Recepción)
+--                 |   (Cantidad, Calidad, Documentos, etc.)
+--                 |
+--                 V
+--   +--------------------------------+
+--   |                                |
+--   |  Tabla Recepción de Mercancías |
+--   |                                |
+--   +--------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, recepcion_de_mercancias
 -- Funciones:
@@ -2214,9 +2252,45 @@ WHERE id = 1;
     INSERT INTO recepcion_de_mercancias (fecha_recepcion, cantidad, calidad, documentos, ubicacion, id_usuario, id_producto, id_historial, observaciones)
     VALUES (NOW(), 100, 'Buena', 'Factura #123', 'Ubicación de Recepción', 2, 1, 1, 'Sin problemas detectados.');
 
-
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Almacenamiento de Productos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |   Almacenamiento de Productos      |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Actualización de Ubicación)
+--                   |   (Ubicación actual en la tabla productos)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |         Tabla Productos            |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Evento)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |  Tabla Historial Productos         |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Detalles del Almacenamiento)
+--                   |   (Ubicación actual, Usuario, Historial, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Almacenamiento           |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, almacenamiento
 -- Funciones:
@@ -2241,7 +2315,54 @@ INSERT INTO almacenamiento (id_producto, ubicacion_actual, fecha_almacenamiento,
 VALUES (1, 'Nueva Ubicación de Almacenamiento', NOW(), 1, 2); -- Reemplaza con los valores específicos
 
 
+-- ---------------------------------------------------------------------------------------------------------------------
+
 -- Proceso de Gestión de Inventarios:
+
+--   +------------------------------------+
+--   |                                    |
+--   |  Gestión de Inventarios            |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Seguimiento)
+--                   |   (Existencias mínimas, existencias máximas, productos caducados, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |    Tabla Gestión de Inventarios    |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Relación con la tabla Productos)
+--                   |   (Monitoreo de los productos)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |         Tabla Productos            |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Usuario Responsable)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |  Tabla Gestión de Inventarios      |
+--   |                                    |
+--  +------------------------------------+
+--                   |
+--                   |   (Usuario responsable de la gestión)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |         Tabla Usuarios             |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, gestion_de_inventarios
 -- Funciones:
@@ -2262,8 +2383,54 @@ UPDATE gestion_de_inventarios
 SET id_usuario = 2 -- Reemplaza con el ID del usuario responsable
 WHERE id = 1; -- Reemplaza con el ID del registro de gestión de inventarios
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Venta de Productos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |    Venta de Productos              |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Detalles de la Venta)
+--                   |   (Fecha de venta, producto, cantidad, precio, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |           Tabla Ventas             |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Actualización de la Cantidad)
+--                   |   (Productos disponibles en la tabla productos)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |         Tabla Productos            |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Evento de Despacho)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |    Tabla Historial Productos       |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Usuario Responsable)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |           Tabla Usuarios           |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, ventas
 -- Funciones:
@@ -2293,9 +2460,44 @@ UPDATE ventas
 SET id_usuario = 2 -- Reemplaza con el ID del usuario responsable
 WHERE id = 1; -- Reemplaza con el ID del registro de venta
 
-
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Control de Calidad:
+
+--   +------------------------------------+
+--   |                                    |
+--   |     Control de Calidad             |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Evaluación de Calidad)
+--                   |   (Fecha de control, resultado, producto, observaciones, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Control de Calidad       |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                  |   (Registro del Evento de Control de Calidad)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Historial Productos      |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Usuario Responsable y Observaciones)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Usuarios                 |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, control_de_calidad
 -- Funciones:
@@ -2318,8 +2520,44 @@ UPDATE control_de_calidad
 SET id_usuario = 2, observaciones = 'Evaluación completa y satisfactoria.'
 WHERE id = 1; -- Reemplaza con el ID del registro de control de calidad
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Preparación de Pedidos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |    Preparación de Pedidos           |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Productos en Preparación de Pedidos)
+--                   |   (Productos, Cantidades, Estado del Pedido, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |    Tabla Preparación de Pedidos     |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Evento de Preparación de Pedidos)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |    Tabla Historial Productos        |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                  |   (Registro del Usuario Responsable y Estado del Pedido)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |    Tabla Usuarios                   |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, preparacion_de_pedidos
 -- Funciones:
@@ -2342,9 +2580,48 @@ UPDATE preparacion_de_pedidos
 SET id_usuario = 2, estado_pedido = 2
 WHERE id = 1; -- Reemplaza con el ID del registro de preparación de pedidos
 
-
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Distribución y Despacho:
+
+--   +------------------------------------+
+--   |                                    |
+--   |  Distribución y Despacho           |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Detalles de Distribución y Despacho)
+--                   |   (Fecha, Destino, Cantidad, Usuario, Vehículo, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Distribución y Despacho     |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Evento de Distribución y Despacho)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Historial Productos         |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Usuario Responsable, Destino y Vehículo)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Usuarios                    |
+--   |                                    |
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Vehículos                   |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, distribucion_y_despacho
 -- Funciones:
@@ -2367,9 +2644,44 @@ UPDATE distribucion_y_despacho
 SET id_usuario = 2, destino = 'Cliente XYZ', id_vehiculo = 2
 WHERE id = 1; -- Reemplaza con el ID del registro de distribución y despacho
 
-
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Gestión de Devoluciones:
+
+--   +------------------------------------+
+--   |                                    |
+--   |    Gestión de Devoluciones         |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Detalles de Devolución)
+--                   |   (Fecha, Razon, Reintegración, Usuario, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Gestión de Devoluciones    |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Evento de Devolución)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Historial Productos        |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Actualización del Usuario Responsable, Cantidad Devuelta y Observaciones)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Usuarios                   |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, gestion_de_devoluciones
 -- Funciones:
@@ -2392,8 +2704,44 @@ UPDATE gestion_de_devoluciones
 SET id_usuario = 2, cantidad_devuelta = 10, observaciones = 'Cliente devolvió productos por error de pedido.'
 WHERE id = 1; -- Reemplaza con el ID del registro de devolución
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Compra de Productos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |    Compra de Productos             |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Detalles de Compra)
+--                   |   (Fecha, Proveedor, Total de Compra, Usuario, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Compras                     |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Actualización de Existencias y Precio de Compra)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Productos                   |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Proveedor, Cantidad Comprada, Precio de Compra y Usuario Responsable)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Proveedores                 |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: productos, historial_productos, compras, proveedores
 -- Funciones:
@@ -2417,8 +2765,44 @@ UPDATE compras
 SET id_proveedor = 1, cantidad_compra = 100, precio_compra = 9.50, id_usuario = 2
 WHERE id = 1; -- Reemplaza con el ID del registro de compra
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Mantenimiento de Equipos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |   Mantenimiento de Equipos         |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Detalles de Mantenimiento)
+--                   |   (Nombre, Descripción, Fecha de Adquisición, Ubicación, Estado, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Equipos                   |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Costos Asociados al Mantenimiento)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Costos                    |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Actualización de la Fecha de Mantenimiento, Descripción y Estado)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Usuarios                  |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: equipos, costos
 -- Funciones:
@@ -2441,8 +2825,36 @@ UPDATE equipos
 SET fecha_adquisicion = '2023-10-01', descripcion_equipo = 'Descripción Actualizada', estado = 'En mantenimiento'
 WHERE id = 1; -- Reemplaza con el ID del equipo que se está manteniendo
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Seguridad y Registro de Incidentes:
+
+--   +------------------------------------+
+--   |                                    |
+--   |   Seguridad y Registro de Incidentes|
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Incidentes de Seguridad)
+--                   |   (Tipo de Incidente, Descripción, Usuario de Seguridad, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Seguridad                 |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Usuarios Responsables de Seguridad)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Usuarios                  |
+--   |                                    |
+--   +------------------------------------+
+
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Tablas involucradas: seguridad
 -- Funciones:
@@ -2454,8 +2866,34 @@ VALUES ('Incidente de Seguridad', 'Descripción detallada del incidente', 2); --
 
 -- Se registran detalles como el tipo de incidente, la descripción y el usuario de seguridad responsable.
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Reportes y Documentación:
+
+--   +------------------------------------+
+--   |                                    |
+--   |   Reportes y Documentación          |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Detalles de Reportes y Documentación)
+--                   |   (Tipo de Documento, Descripción, Usuario de Reportes, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Reportes y Documentación  |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Usuarios Responsables de Reportes)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Usuarios                  |
+--   |                                    |
+--   +------------------------------------+
 
 -- Tablas involucradas: reportes_y_documentacion
 -- Funciones:
@@ -2467,8 +2905,37 @@ VALUES ('Informe Mensual', 'Informe detallado de las operaciones mensuales', 2);
 
 -- Se registran detalles del tipo de documento, la descripción y el usuario responsable.
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Control de Acceso a la Configuración del Sistema:
+
+--   +------------------------------------+
+--   |                                    |
+--   |  Control de Acceso a Configuración  |
+--   |       del Sistema                  |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Acceso a Configuración)
+--                   |   (ID de Usuario, Tiene Acceso, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Acceso a Configuración    |
+--   |     del Sistema                    |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Usuarios con Acceso)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |     Tabla Usuarios                  |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: acceso_a_configuracion_del_sistema
 -- Funciones:
@@ -2480,8 +2947,44 @@ VALUES (2, true); -- Reemplaza con los valores específicos
 
 -- Se registra si un usuario tiene acceso a la configuración del sistema.
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Registro de Usuarios:
+
+--   +------------------------------------+
+--   |                                    |
+--   |     Registro de Usuarios           |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Nuevo Usuario)
+--                   |   (Nombre, Apellido, Usuario, Teléfono, Email, Contraseña, Nivel de Permisos, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |         Tabla Usuarios             |
+--   |                                    |
+--   +------------------------------------+
+
+
+-- Proceso de Registro de Usuarios:
+
+--   +------------------------------------+
+--   |                                    |
+--   |     Registro de Usuarios           |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Nuevo Usuario)
+--                   |   (Nombre, Apellido, Usuario, Teléfono, Email, Contraseña, Nivel de Permisos, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |         Tabla Usuarios             |
+--   |                                    |
+--   +------------------------------------+
 
 -- Tablas involucradas: usuarios
 -- Funciones:
@@ -2493,9 +2996,26 @@ VALUES ('Nombre', 'Apellido', 'nombreusuario', '123456789', 'correo@ejemplo.com'
 
 -- Se registra un nuevo usuario con su información personal y nivel de permisos.
 
-
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Registro de Vehículos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |     Registro de Vehículos          |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Nuevo Vehículo)
+--                   |   (Nombre, Descripción, Marca, Modelo, Año, Placa, Color, Capacidad, Disponibilidad, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |         Tabla Vehículos             |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: vehiculos
 -- Funciones:
@@ -2508,9 +3028,27 @@ VALUES ('Vehículo 1', 'Descripción del vehículo 1', 'Marca 1', 'Modelo 1', 20
 -- Se registra un nuevo vehículo con información detallada, incluyendo nombre, descripción, marca, modelo, año, placa, color, capacidad y disponibilidad.
 
 
--- Procedimientos:
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Registro de Niveles de Usuario:
+
+--   +------------------------------------+
+--   |                                    |
+--   |  Registro de Niveles de Usuario    |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de Nuevos Niveles de Usuario)
+--                   |   (Descripción de los Niveles, como "Chofer", "Administrador", "Cliente", etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Niveles de Usuario          |
+--   |                                    |
+--   +------------------------------------+
+
+
 
 -- Tablas involucradas: niveles_de_usuario
 -- Funciones:
@@ -2523,8 +3061,26 @@ VALUES
 
 -- Se registran los diferentes niveles de usuario con descripciones específicas en la tabla niveles_de_usuario.
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Gestión de Clientes:
+
+--   +------------------------------------+
+--   |                                    |
+--   |     Gestión de Clientes            |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Nuevo Cliente)
+--                   |   (Nombre, Contacto, Teléfono, Email, Dirección, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |        Tabla Clientes               |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tabla involucrada: clientes
 -- Funciones:
@@ -2539,8 +3095,26 @@ VALUES ('Nombre del Cliente', 'Contacto del Cliente', '123-456-7890', 'cliente@e
 
 -- También puedes relacionar este cliente con un usuario existente a través de la columna "id_usuario".
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Facturación:
+
+--   +------------------------------------+
+--   |                                    |
+--   |         Facturación                |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de una Nueva Factura)
+--                   |   (Número de Factura, Fecha de Emisión, Descripción, Monto Total, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |           Tabla Factura             |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: factura
 -- Funciones:
@@ -2553,7 +3127,46 @@ VALUES ('FAC-001', '2023-10-13', 'Descripción de la factura', 1000.00, 1);
 -- En el ejemplo anterior, se ha registrado una nueva factura en la tabla factura. 
 -- Puedes personalizar los valores según los detalles de la factura que deseas registrar.
 
+-- ---------------------------------------------------------------------------------------------------------------------
+
 -- Proceso de Pagos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |             Pagos                  |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Nuevo Pago)
+--                   |   (Número de Pago, Fecha de Pago, Monto Pagado, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |          Tabla Pagos               |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Actualización del Saldo Pendiente)
+--                   |   (Saldo Pendiente en la Tabla estado_de_cuenta)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |    Tabla Estado de Cuenta          |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro del Pago en el Historial de Pagos)
+--                   |   (Fecha de Pago, Monto Pagado, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |   Tabla Historial de Pagos         |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: pagos, estado_de_cuenta, historial_de_pagos
 -- Funciones:
@@ -2582,8 +3195,26 @@ VALUES ('2023-10-20', 500.00, 1);
 
 -- Asegúrate de personalizar los valores según los detalles de la factura y el pago que deseas registrar.
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Proceso de Asignación de Vehículos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |   Asignación de Vehículos          |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de una Asignación de Vehículo)
+--                   |   (Tipo de Movimiento, Fecha, Cantidad de Combustible, Usuario Responsable, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |    Tabla Movimientos de Vehículos   |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: movimientos_vehiculos
 -- Funciones:
@@ -2595,7 +3226,27 @@ VALUES (1, 'Asignación', NOW(), 50.00, 2);
 
 -- En el ejemplo anterior, se ha registrado una asignación de vehículo en la tabla movimientos_vehiculos. Puedes personalizar los valores según los detalles de la asignación.
 
+-- ---------------------------------------------------------------------------------------------------------------------
+
 -- Proceso de Desasignación de Vehículos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |   Desasignación de Vehículos        |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de una Desasignación de Vehículo)
+--                   |   (Tipo de Movimiento, Fecha, Cantidad de Combustible, Usuario Responsable, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |    Tabla Movimientos de Vehículos   |
+--   |                                    |
+--   +------------------------------------+
+
+
 
 -- Tablas involucradas: movimientos_vehiculos
 -- Funciones:
@@ -2609,15 +3260,27 @@ VALUES (1, 'Desasignación', NOW(), 10.00, 2);
 
 -- Asegúrate de utilizar los valores adecuados para los campos y las tablas según tus necesidades y los detalles específicos de los movimientos de asignación y desasignación de vehículos.
 
-
-
-
-
-
-
--- ***********************************************************************
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Registro de Compras:
+
+--   +------------------------------------+
+--   |                                    |
+--   |         Compras                    |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de una Compra)
+--                   |   (Fecha, Proveedor, Total Compra, Usuario Responsable, Precio Compra, Cantidad Compra, etc.)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |           Tabla Compras             |
+--   |                                    |
+--   +------------------------------------+
+
+
 
 -- Tablas involucradas: compras, productos
 -- Funciones:
@@ -2629,8 +3292,27 @@ VALUES (NOW(), 1, 500.00, 2, 5.00, 100, 1);
 
 -- En el ejemplo anterior, se ha registrado una compra en la tabla compras. Personaliza los valores según los detalles de la compra.
 
+-- ---------------------------------------------------------------------------------------------------------------------
 
 -- Registro de Ventas:
+
+--   +------------------------------------+
+--   |                                    |
+--   |          Ventas                    |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de una Venta)
+--                   |   (Fecha, ID de Producto, Cantidad, Precio Venta, Cantidad Venta, Precio Unitario, Total, ID de Usuario)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |           Tabla Ventas              |
+--   |                                    |
+--   +------------------------------------+
+
+
 
 -- Tablas involucradas: ventas, productos
 -- Funciones:
@@ -2642,7 +3324,26 @@ VALUES (NOW(), 1, 50, 10.00, 50, 10.00, 500.00, 2);
 
 -- En el ejemplo anterior, se ha registrado una venta en la tabla ventas. Personaliza los valores según los detalles de la venta.
 
+-- ---------------------------------------------------------------------------------------------------------------------
+
 -- Gestión de Proveedores:
+
+--   +------------------------------------+
+--   |                                    |
+--   |         Proveedores                |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Nuevo Proveedor)
+--                   |   (Nombre, Contacto, Teléfono, Email, Dirección, ID de Usuario)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |           Tabla Proveedores         |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tabla involucrada: proveedores
 -- Funciones:
@@ -2654,7 +3355,56 @@ VALUES ('Nombre del Proveedor', 'Contacto del Proveedor', '123-456-7890', 'prove
 
 -- En el ejemplo anterior, se ha registrado un nuevo proveedor en la tabla proveedores. Personaliza los valores según los detalles del proveedor.
 
+-- ---------------------------------------------------------------------------------------------------------------------
+
 -- Gestión de Facturas y Pagos:
+
+--   +------------------------------------+
+--   |                                    |
+--   |     Factura y Pagos                |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de una Factura)
+--                   |   (Número de Factura, Fecha de Emisión, Descripción, Monto Total, ID de Cliente)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |            Tabla Factura           |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Pago)
+--                   |   (Número de Pago, Fecha de Pago, Monto Pagado, ID de Factura)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |            Tabla Pagos             |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Estado de Cuenta)
+--                   |   (Fecha de Actualización, Saldo Pendiente, ID de Cliente)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |      Tabla Estado de Cuenta        |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de un Historial de Pagos)
+--                   |   (Fecha de Pago, Monto Pagado, ID de Cliente)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |      Tabla Historial de Pagos      |
+--   |                                    |
+--   +------------------------------------+
+
 
 -- Tablas involucradas: factura, pagos, estado_de_cuenta, historial_de_pagos
 -- Funciones:
@@ -2678,7 +3428,27 @@ VALUES ('2023-10-15', 500.00, 1);
 
 -- En los ejemplos anteriores, se ha registrado una factura, un pago, un estado de cuenta y un historial de pagos. Personaliza los valores según los detalles de la factura y el pago.
 
+-- ---------------------------------------------------------------------------------------------------------------------
+
 -- Seguimiento de Flujo de Efectivo:
+
+--   +------------------------------------+
+--   |                                    |
+--   |   Flujo de Efectivo                |
+--   |                                    |
+--   +------------------------------------+
+--                   |
+--                   |   (Registro de una Transacción de Flujo de Efectivo)
+--                   |   (Fecha de Transacción, Tipo de Transacción, Descripción, Monto)
+--                   |
+--                   V
+--   +------------------------------------+
+--   |                                    |
+--   |      Tabla Flujo de Efectivo       |
+--   |                                    |
+--   +------------------------------------+
+
+
 
 -- Tabla involucrada: flujo_de_efectivo
 -- Funciones:
